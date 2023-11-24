@@ -100,7 +100,7 @@
 <div class="surface-ground flex align-items-center justify-content-center overflow-hidden">
     <div class="flex flex-column align-items-center justify-content-center">
         <img
-                src="./assets/caisse.png"
+                src="../../assets/images/caisse.png"
                 alt="Caisse App"
                 class="mb-3 w-10rem flex-shrink-0"
         />

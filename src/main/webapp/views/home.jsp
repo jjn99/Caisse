@@ -103,7 +103,7 @@
         <div class="col-6 md:col-3 lg:col-2 stock m-2 cursor-pointer" style="border: 1px solid #ED5867;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out" href="caisse/list">
             <div class="flex flex-column align-items-center justify-content-center">
                 <img
-                        src="../assets/icon-caisse.png"
+                        src="./assets/images/icon-caisse.png"
                         alt="Menu Caisse"
                         class="mb-3 w-5rem flex-shrink-0"
                 />
@@ -113,7 +113,7 @@
         <div class="col-6 md:col-3 lg:col-2 stock m-2 cursor-pointer" style="border: 1px solid #FF7800;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out">
             <div class="flex flex-column align-items-center justify-content-center">
                 <img
-                        src="../assets/icon-statistiques.png"
+                        src="./assets/images/icon-statistiques.png"
                         alt="Menu day"
                         class="mb-3 w-5rem flex-shrink-0"
                 />
@@ -123,7 +123,7 @@
         <div class="col-6 md:col-3 lg:col-2 stock m-2 cursor-pointer" style="border: 1px solid #52C4FE;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out">
             <div class="flex flex-column align-items-center justify-content-center">
                 <img
-                        src="../assets/icon-stock.png"
+                        src="./assets/images/icon-stock.png"
                         alt="Menu Stock"
                         class="mb-3 w-5rem flex-shrink-0 "
                 />
@@ -133,7 +133,7 @@
         <div class="col-6 md:col-3 lg:col-2 stock m-2 cursor-pointer" style="border: 1px solid #9B59B6;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out">
             <div class="flex flex-column align-items-center justify-content-center">
                 <img
-                        src="../assets/icon-user.png"
+                        src="./assets/images/icon-user.png"
                         alt="Menu Users"
                         class="mb-3 w-5rem flex-shrink-0 "
                 />
@@ -143,7 +143,7 @@
         <div class="col-6 md:col-3 lg:col-2 stock m-2 cursor-pointer" style="border: 1px solid #1ABC9C;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out">
             <div class="flex flex-column align-items-center justify-content-center">
                 <img
-                        src="../assets/icon-parametres.png"
+                        src="./assets/images/icon-parametres.png"
                         alt="Menu Settings"
                         class="mb-3 w-5rem flex-shrink-0"
                 />

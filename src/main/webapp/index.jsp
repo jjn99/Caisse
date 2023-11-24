@@ -1,10 +1,10 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>JSP - Hello World</title>
 </head>
 <body>
-Bonjour
+    <%@ include file="views/home.jsp" %>
 </body>
 </html>
