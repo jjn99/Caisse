@@ -10,11 +10,6 @@
 <head>
     <title>Home</title>
     <style>
-        .col-2 {
-            flex: 0 0 auto;
-            padding: 0.5rem;
-            width: 16.6667%;
-        }
         .flex {
             display: flex !important;
         }
@@ -103,10 +98,9 @@
     </style>
 </head>
 <body>
-<%@include file="../assets/components/navbar.jsp" %>
     <div class="container align-items-center justify-content-center  overflow-hidden min-h-screen min-w-screen">
     <div class="grid p-6 ">
-        <div class="col-2 stock m-2 cursor-pointer" style="border: 1px solid #ED5867;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out" href="caisse/list">
+        <div class="col-6 md:col-3 lg:col-2 stock m-2 cursor-pointer" style="border: 1px solid #ED5867;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out" href="caisse/list">
             <div class="flex flex-column align-items-center justify-content-center">
                 <img
                         src="./assets/images/icon-caisse.png"
@@ -116,7 +110,7 @@
                 <div class="text-900 text-3xl font-medium text-center">Caisse</div>
             </div>
         </div>
-        <div class="col-2 stock m-2 cursor-pointer" style="border: 1px solid #FF7800;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out">
+        <div class="col-6 md:col-3 lg:col-2 stock m-2 cursor-pointer" style="border: 1px solid #FF7800;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out">
             <div class="flex flex-column align-items-center justify-content-center">
                 <img
                         src="./assets/images/icon-statistiques.png"
@@ -126,7 +120,7 @@
                 <div class="text-900 text-3xl font-medium text-center">Ma Journee</div>
             </div>
         </div>
-        <div class="col-2 stock m-2 cursor-pointer" style="border: 1px solid #52C4FE;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out">
+        <div class="col-6 md:col-3 lg:col-2 stock m-2 cursor-pointer" style="border: 1px solid #52C4FE;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out">
             <div class="flex flex-column align-items-center justify-content-center">
                 <img
                         src="./assets/images/icon-stock.png"
@@ -136,7 +130,7 @@
                 <div class="text-900 text-3xl font-medium text-center">Stock</div>
             </div>
         </div>
-        <div class="col-2 stock m-2 cursor-pointer" style="border: 1px solid #9B59B6;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out">
+        <div class="col-6 md:col-3 lg:col-2 stock m-2 cursor-pointer" style="border: 1px solid #9B59B6;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out">
             <div class="flex flex-column align-items-center justify-content-center">
                 <img
                         src="./assets/images/icon-user.png"
@@ -146,7 +140,7 @@
                 <div class="text-900 text-3xl font-medium text-center">Utilisateurs</div>
             </div>
         </div>
-        <div class="col-2 stock m-2 cursor-pointer" style="border: 1px solid #1ABC9C;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out">
+        <div class="col-6 md:col-3 lg:col-2 stock m-2 cursor-pointer" style="border: 1px solid #1ABC9C;border-radius: .25rem; transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out">
             <div class="flex flex-column align-items-center justify-content-center">
                 <img
                         src="./assets/images/icon-parametres.png"
