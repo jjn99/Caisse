@@ -4,5 +4,5 @@ import com.example.caisse.entities.Gestionnaire;
 import lombok.NonNull;
 
 public interface IUserDao {
-    Gestionnaire findByLogin(@NonNull String login);
+   public Gestionnaire findByLogin(@NonNull String login);
 }

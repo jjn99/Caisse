@@ -23,3 +23,15 @@ public class DBConnection {
     }
 
 }
+/*
+  try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {}
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/caisseregister", "root", "");
+            System.out.println("Connection etablie");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return connection;
+*/
