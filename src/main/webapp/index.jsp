@@ -5,6 +5,6 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-    <%@ include file="views/auth/login.jsp" %>
+    <%@ include file="views/home.jsp" %>
 </body>
 </html>

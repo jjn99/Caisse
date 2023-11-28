@@ -157,6 +157,33 @@
             </div>
         </div>
     </div>
+
+
+        <div class="container">
+            <div class="p-2 border-round-xl" style="background: white;border: 1px solid #ED5867;border-radius: .25rem; width: 300px;">
+                <div class="content bg-white h-full p-2">
+                    <div class="flex align-items-center gap-2 py-2 px-3">
+                        <i class="bi bi-piggy-bank"></i>
+                        <span class="font-medium text-gray-900">Nom Caisse</span>
+                    </div>
+                    <div class="mt-3 content-image-wrapper relative text-center w-full flex align-items-center justify-content-center">
+                        <div class="content-image bg-cover bg-no-repeat bg-center h-auto w-7rem z-4" style="border-radius: 70px;">
+                            <img src="./assets/images/icon-caisse.png" alt="Prime Coffee Shop" class="w-full" />
+                        </div>
+                </div>
+                <div class="content-info">
+                    <div class="flex align-items-center justify-content-center pt-2 px-3 gap-2">
+                        <button class="p-3 flex align-items-center justify-content-center w-7 gap-2 bg-white border-1 shadow-1 cursor-pointer hover:bg-black-alpha-10 transition-duration-200" style="border-radius: 50px;">
+                            <span class="font-medium text-gray-900 white-space-nowrap">Views</span>
+                        </button>
+                        <button class="p-3 flex align-items-center justify-content-center w-5 gap-2 bg-gray-900 shadow-1 border-none cursor-pointer hover:bg-gray-800 transition-duration-200" style="border-radius: 50px;">
+                            <span class="font-medium white-space-nowrap">Traiter</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
 </div>
 </body>
 </html>

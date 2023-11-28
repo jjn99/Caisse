@@ -7,108 +7,108 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>Login</title>
-    <style>
-        .alert {
-            position: relative;
-            padding: .75rem 1.25rem;
-            margin-bottom: 1rem;
-            border: 1px solid transparent;
-            border-radius: .25rem
-        }
-        .flex {
-            display: flex !important;
-        }
-        .flex-column {
-            flex-direction: column !important;
-        }
-        .justify-content-center {
-            justify-content: center !important;
-        }
-        .align-items-center {
-            align-items: center !important;
-        }
-        .text-900 {
-            color: #212121 !important;
-        }
-        .text-center {
-            text-align: center !important;
-        }
-        .text-xl {
-            font-size: 1.25rem !important;
-        }
-        .mb-2 {
-            margin-bottom: 0.5rem !important;
-        }
-        .w-full {
-            width: 100% !important;
-        }
-        .form-control {
-            display: block;
-            width: 100%;
-            padding: .375rem .75rem;
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #495057;
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1px solid #ced4da;
-            border-radius: .25rem;
-            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
-        }
-        .btn {
-            display: inline-block;
-            font-weight: 400;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            border: 1px solid transparent;
-            padding: .375rem .75rem;
-            font-size: 1rem;
-            line-height: 1.5;
-            border-radius: .25rem;
-            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
-        }
-        .flex-shrink-0 {
-            flex-shrink: 0 !important;
-        }
-        .surface-card {
-            background-color: #ffffff !important;
-        }
-        .surface-ground {
-            background-color: #ffffff !important;
-        }
-        .overflow-hidden {
-            overflow: hidden !important;
-        }
-        .text-3xl {
-            font-size: 1.75rem !important;
-        }
-        .font-medium {
-            font-weight: 500 !important;
-        }
-        .mb-3 {
-            margin-bottom: 1rem !important;
-        }
-        .block {
-            display: block !important;
-        }
-        .md\:w-30rem {
-            width: 30rem !important;
-        }
-        .alert-danger {
-            color: #721c24;
-            background-color: #f8d7da;
-            border-color: #f5c6cb
-        }
-    </style>
+    <%@include file="../../styles/styles.jsp"%>
+<%--    <style>--%>
+<%--        .alert {--%>
+<%--            position: relative;--%>
+<%--            padding: .75rem 1.25rem;--%>
+<%--            margin-bottom: 1rem;--%>
+<%--            border: 1px solid transparent;--%>
+<%--            border-radius: .25rem--%>
+<%--        }--%>
+<%--        .flex {--%>
+<%--            display: flex !important;--%>
+<%--        }--%>
+<%--        .flex-column {--%>
+<%--            flex-direction: column !important;--%>
+<%--        }--%>
+<%--        .justify-content-center {--%>
+<%--            justify-content: center !important;--%>
+<%--        }--%>
+<%--        .align-items-center {--%>
+<%--            align-items: center !important;--%>
+<%--        }--%>
+<%--        .text-900 {--%>
+<%--            color: #212121 !important;--%>
+<%--        }--%>
+<%--        .text-center {--%>
+<%--            text-align: center !important;--%>
+<%--        }--%>
+<%--        .text-xl {--%>
+<%--            font-size: 1.25rem !important;--%>
+<%--        }--%>
+<%--        .mb-2 {--%>
+<%--            margin-bottom: 0.5rem !important;--%>
+<%--        }--%>
+<%--        .w-full {--%>
+<%--            width: 100% !important;--%>
+<%--        }--%>
+<%--        .form-control {--%>
+<%--            display: block;--%>
+<%--            width: 100%;--%>
+<%--            padding: .375rem .75rem;--%>
+<%--            font-size: 1rem;--%>
+<%--            line-height: 1.5;--%>
+<%--            color: #495057;--%>
+<%--            background-color: #fff;--%>
+<%--            background-clip: padding-box;--%>
+<%--            border: 1px solid #ced4da;--%>
+<%--            border-radius: .25rem;--%>
+<%--            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out--%>
+<%--        }--%>
+<%--        .btn {--%>
+<%--            display: inline-block;--%>
+<%--            font-weight: 400;--%>
+<%--            text-align: center;--%>
+<%--            white-space: nowrap;--%>
+<%--            vertical-align: middle;--%>
+<%--            -webkit-user-select: none;--%>
+<%--            -moz-user-select: none;--%>
+<%--            -ms-user-select: none;--%>
+<%--            user-select: none;--%>
+<%--            border: 1px solid transparent;--%>
+<%--            padding: .375rem .75rem;--%>
+<%--            font-size: 1rem;--%>
+<%--            line-height: 1.5;--%>
+<%--            border-radius: .25rem;--%>
+<%--            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out--%>
+<%--        }--%>
+<%--        .flex-shrink-0 {--%>
+<%--            flex-shrink: 0 !important;--%>
+<%--        }--%>
+<%--        .surface-card {--%>
+<%--            background-color: #ffffff !important;--%>
+<%--        }--%>
+<%--        .surface-ground {--%>
+<%--            background-color: #ffffff !important;--%>
+<%--        }--%>
+<%--        .overflow-hidden {--%>
+<%--            overflow: hidden !important;--%>
+<%--        }--%>
+<%--        .text-3xl {--%>
+<%--            font-size: 1.75rem !important;--%>
+<%--        }--%>
+<%--        .font-medium {--%>
+<%--            font-weight: 500 !important;--%>
+<%--        }--%>
+<%--        .mb-3 {--%>
+<%--            margin-bottom: 1rem !important;--%>
+<%--        }--%>
+<%--        .block {--%>
+<%--            display: block !important;--%>
+<%--        }--%>
+<%--        .md\:w-30rem {--%>
+<%--            width: 30rem !important;--%>
+<%--        }--%>
+<%--        .alert-danger {--%>
+<%--            color: #721c24;--%>
+<%--            background-color: #f8d7da;--%>
+<%--            border-color: #f5c6cb--%>
+<%--        }--%>
+<%--    </style>--%>
 </head>
 <body>
 <div class="surface-ground flex align-items-center justify-content-center overflow-hidden">
@@ -118,9 +118,16 @@
                 alt="Caisse App"
                 class="mb-3 w-10rem flex-shrink-0"
         />
-        <c:if test="${error_message != null}">
-            <div class="alert alert-danger">
-                    ${error_message}
+        <c:if test="${ !empty error_message}">
+<%--            <div class="alert alert-danger">--%>
+<%--                    <c:out value="${error_message}"/>--%>
+<%--            </div>--%>
+            <div class="alert alert-danger h-max-15rem d-flex text-align-center" role="alert">
+               <div class="row">
+                   <div>
+                       <c:out value="${error_message}"/>
+                   </div>
+               </div>
             </div>
         </c:if>
         <form method="post" action="AuthLoginServlet">

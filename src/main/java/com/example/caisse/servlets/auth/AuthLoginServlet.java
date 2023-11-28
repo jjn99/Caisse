@@ -39,11 +39,13 @@ public class AuthLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
+        String error = null;
         if(login.isEmpty() || password.isEmpty()){
             try {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/views/auth/login.jsp");
                 request.setAttribute("error_message", "Login ou Mot de passe obligatoire");
                 System.out.println("Login ou Mot de passe obligatoire");
+                error = "Login ou Mot de passe obligatoire";
                 dispatcher.forward(request, response);
             } catch (ServletException | IOException e) {
                 throw new RuntimeException(e);
