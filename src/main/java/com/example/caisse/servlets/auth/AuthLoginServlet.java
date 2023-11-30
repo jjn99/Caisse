@@ -31,7 +31,8 @@ public class AuthLoginServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/views/auth/login.jsp");
             dispatcher.forward(request, response);
         }else {
-            response.sendRedirect("/homeServlet");
+            System.out.println("redirect");
+            response.sendRedirect("homeServlet");
         }
     }
 
@@ -39,13 +40,10 @@ public class AuthLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        String error = null;
         if(login.isEmpty() || password.isEmpty()){
             try {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/views/auth/login.jsp");
                 request.setAttribute("error_message", "Login ou Mot de passe obligatoire");
-                System.out.println("Login ou Mot de passe obligatoire");
-                error = "Login ou Mot de passe obligatoire";
                 dispatcher.forward(request, response);
             } catch (ServletException | IOException e) {
                 throw new RuntimeException(e);
@@ -55,18 +53,15 @@ public class AuthLoginServlet extends HttpServlet {
             if(user == null) {
                 try {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/views/auth/login.jsp");
-                    request.setAttribute("error_message", "Login ou Mot de passe incorrect");
-                    System.out.println("Login ou Mot de passe incorrect");
                     dispatcher.forward(request, response);
                 } catch (ServletException | IOException e) {
                     throw new RuntimeException(e);
                 }
             }else {
-                if(!Objects.equals(user.getMotdepasse(), password)) {
+                System.out.println(PasswordUtils.check(password,user.getMotdepasse()));
+                if(!PasswordUtils.check(password,user.getMotdepasse())) {
                     try {
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/auth/login.jsp");
-                        request.setAttribute("error_message", "Mot de passe incorrect");
-                        System.out.println("Mot de passe incorrect");
                         dispatcher.forward(request, response);
                     } catch (ServletException | IOException e) {
                         throw new RuntimeException(e);
@@ -76,7 +71,6 @@ public class AuthLoginServlet extends HttpServlet {
                         HttpSession session = request.getSession();
                         session.setAttribute("user",user);
                         response.sendRedirect("homeServlet");
-                        System.out.println("Successfully");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

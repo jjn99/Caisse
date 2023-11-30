@@ -1,6 +1,5 @@
-package com.example.caisse.servlets;
+package com.example.caisse.servlets.users;
 
-import com.example.caisse.dao.impl.ProduitsDao;
 import com.example.caisse.dao.impl.UserDao;
 import com.example.caisse.entities.Gestionnaire;
 import jakarta.servlet.RequestDispatcher;
@@ -12,20 +11,19 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "homeServlet" , value="/homeServlet")
-public class homeServlet extends HttpServlet {
+@WebServlet(name = "HomeUserServlet" ,value = "/HomeUserServlet")
+public class HomeServlet extends HttpServlet {
     private final UserDao userDao = new UserDao();
-    private final ProduitsDao produitDao = new ProduitsDao();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("users", userDao.findAll().size());
-        request.setAttribute("products", produitDao.findAll().size());
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/home.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/users/userHome.jsp");
+        request.setAttribute("users", userDao.findAll());
         dispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendError(405);
+
+
     }
 }

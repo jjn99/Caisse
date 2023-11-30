@@ -8,7 +8,7 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "LogoutServlet", value = "/LogoutServlet")
+@WebServlet(name = "/LogoutServlet", value = "/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
     private SessionService sessions;
     @Override

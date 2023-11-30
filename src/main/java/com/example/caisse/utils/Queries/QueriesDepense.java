@@ -6,8 +6,8 @@ public enum QueriesDepense {
     SELECT_USER("SELECT * FROM depense WHERE idGest = ?;"),
     SELECT_Caisse("SELECT * FROM depense WHERE idCaisse = ?;"),
     SELECT_ALL("SELECT * FROM depense ORDER BY libelle ASC;"),
-    INSERT_SIMPLE("INSERT INTO depense(libelle,montant,date,beneficiaire,idGest,idCaisse) VALUES (?,?,?,?,?,?);"),
-    UPDATE_SIMPLE("UPDATE depense SET libelle = ?,depense = ?, date = ?,beneficiaire =?,idGest =?,idCaisse =? WHERE id = ?;"),
+    INSERT_SIMPLE("INSERT INTO depense(libelle,montantEntrants,montantSortant,date,beneficiaire,idGest,idCaisse) VALUES (?,?,?,?,?,?,?);"),
+    UPDATE_SIMPLE("UPDATE depense SET libelle = ?,montantEntrants = ?,montantSortant = ?, date = ?,beneficiaire =?,idGest =?,idCaisse =? WHERE id = ?;"),
     DELETE_SIMPLE("DELETE FROM depense WHERE id = ?;");
 
     private final String query;

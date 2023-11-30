@@ -15,12 +15,20 @@ import lombok.*;
 public class Gestionnaire{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String ID;
+    private Integer Id;
     private String nom;
     private String prenom;
     private String telephone;
     private String motdepasse;
     private String login;
+
+    public Gestionnaire(String nom, String prenom, String telephone, String password, String login) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.telephone = telephone;
+        this.motdepasse = password;
+        this.login = login;
+    }
 
     public enum Roles {
         GESTIONNAIRE,

@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Data
@@ -14,14 +14,13 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class DepenseVente {
+public class AllimenntationArretCaisse {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String ID;
-    private String libelle;
-    private float montantEntrants;
-    private float montantSortants;
-    private String beneficiaires;
-    private String adresse;
-    private Date date ;
+    private Integer id;
+    private String type;
+    private float montant_total;
+    private Date date;
+    private Integer idCaisse;
+    private String commentaire;
 }

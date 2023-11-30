@@ -17,7 +17,7 @@ import lombok.ToString;
 public class Personne {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String ID;
+    private Integer ID;
     private String nom;
     private String prenom;
     private String telephone;

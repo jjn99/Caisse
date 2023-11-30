@@ -21,17 +21,13 @@ public class DepenseReaprovisionnementDao implements IDepenseReaprovisionnementD
     private final Connection connection = DBConnection.loadDataBase();
 
     public DepenseReaprovisionnement createInstance(ResultSet result) throws SQLException {
-        return new DepenseReaprovisionnement(result.getInt(1), result.getString(2),
-                result.getFloat(3), result.getString(4),
-                result.getString(5), result.getDate(6));
-    }
-
-    public List<DepenseReaprovisionnement> createListInstance(ResultSet result) throws SQLException {
-        List<DepenseReaprovisionnement> depenseReaprovisionnements = new ArrayList<>();
-        for(int i = 0; i < result.getFetchSize(); i++) {
-            depenseReaprovisionnements.add(createInstance(result));
-        }
-        return depenseReaprovisionnements;
+        return new DepenseReaprovisionnement(
+                result.getInt(1),
+                result.getString(2),
+                result.getFloat(3),
+                result.getString(4),
+                result.getString(5),
+                result.getDate(6));
     }
     @Override
     public List<DepenseReaprovisionnement> findAll() {
@@ -40,8 +36,8 @@ public class DepenseReaprovisionnementDao implements IDepenseReaprovisionnementD
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
             var result = statement.executeQuery();
-            if(result.next()) {
-                depenseReaprovisionnements = createListInstance(result);
+            while( result.next() ){
+                depenseReaprovisionnements.add( createInstance(result) );
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -84,8 +80,8 @@ public class DepenseReaprovisionnementDao implements IDepenseReaprovisionnementD
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,Beneficiaire);
             var result = statement.executeQuery();
-            if(result.next()) {
-                depenseReaprovisionnements = createListInstance(result);
+            while( result.next() ){
+                depenseReaprovisionnements.add( createInstance(result) );
             }
         }catch (Exception e) {
             e.printStackTrace();

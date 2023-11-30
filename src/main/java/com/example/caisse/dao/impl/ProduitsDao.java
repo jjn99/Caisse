@@ -18,18 +18,15 @@ public class ProduitsDao implements IProduitsDao {
     private final Connection connection = DBConnection.loadDataBase();
 
     public Produits createInstance(ResultSet result) throws SQLException {
-        return new Produits(result.getInt(1), result.getString(2),
-                result.getFloat(3), result.getInt(4),
-                result.getString(5), result.getString(6),
-                result.getInt(7), result.getString(8));
-    }
-
-    public List<Produits> createListInstance(ResultSet result) throws SQLException {
-        List<Produits> produits = new ArrayList<>();
-        for(int i = 0; i < result.getFetchSize(); i++) {
-            produits.add(createInstance(result));
-        }
-        return produits;
+        return new Produits(
+                result.getInt(1),
+                result.getString(2),
+                result.getFloat(3),
+                result.getInt(4),
+                result.getString(5),
+                result.getString(6),
+                result.getInt(7),
+                result.getString(8));
     }
 
     @Override
@@ -67,8 +64,8 @@ public class ProduitsDao implements IProduitsDao {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,type);
             var result = statement.executeQuery();
-            if(result.next()) {
-                produits = createListInstance(result);
+            while( result.next() ){
+                produits.add( createInstance(result) );
             }
         }catch (Exception e) {
             e.printStackTrace();
@@ -83,8 +80,8 @@ public class ProduitsDao implements IProduitsDao {
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
             var result = statement.executeQuery();
-            if(result.next()) {
-                produits = createListInstance(result);
+            while( result.next() ){
+                produits.add( createInstance(result) );
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -117,8 +114,8 @@ public class ProduitsDao implements IProduitsDao {
             PreparedStatement statement = connection.prepareStatement(Query);
             statement.setInt(1,idReapro);
             var result = statement.executeQuery();
-            if(result.next()) {
-                produits = createListInstance(result);
+            while( result.next() ){
+                produits.add( createInstance(result) );
             }
         }catch (Exception e) {
             e.printStackTrace();

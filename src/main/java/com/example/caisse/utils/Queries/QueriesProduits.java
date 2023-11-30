@@ -3,7 +3,7 @@ package com.example.caisse.utils.Queries;
 public enum QueriesProduits {
 
     SELECT_WHERE("SELECT * FROM Produits WHERE codeProduct = ?;"),
-    SELECT_ALL("SELECT * FROM Produits ORDER BY libelle ASC;"),
+    SELECT_ALL("SELECT * FROM produits ORDER BY libelle ASC;"),
     SELECT_TYPE("SELECT * FROM Produits WHERE type = ? ORDER BY libelle ASC;"),
     SELECT_ID("SELECT * FROM Produits WHERE id = ?;"),
     SELECT_LIBELLE("SELECT * FROM Produits WHERE libelle = ?;"),

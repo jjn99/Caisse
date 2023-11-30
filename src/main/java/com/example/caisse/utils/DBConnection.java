@@ -15,7 +15,6 @@ public class DBConnection {
 
         try {
             connexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/caisse_app", "postgres", "Kali-linux23");
-            System.out.println("Connexion etablie");
         }catch (Exception e){
             e.printStackTrace();
         }

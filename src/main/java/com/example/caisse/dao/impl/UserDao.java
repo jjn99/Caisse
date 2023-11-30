@@ -15,20 +15,12 @@ import java.util.List;
 
 public class UserDao implements IUserDao {
 
-    private Connection connection = DBConnection.loadDataBase();
+    private final Connection connection = DBConnection.loadDataBase();
 
     public Gestionnaire createInstance(ResultSet result) throws SQLException {
-        return new Gestionnaire( result.getString(1), result.getString(2),
+        return new Gestionnaire( result.getInt(1), result.getString(2),
                 result.getString(3), result.getString(4),
                 result.getString(5), result.getString(6));
-    }
-
-    public List<Gestionnaire> createListInstance(ResultSet result) throws SQLException {
-        List<Gestionnaire> gestionnaires = new ArrayList<>();
-        for(int i = 0; i < result.getFetchSize(); i++) {
-            gestionnaires.add(createInstance(result));
-        }
-        return gestionnaires;
     }
 
     @Override
@@ -49,13 +41,13 @@ public class UserDao implements IUserDao {
 
     @Override
     public List<Gestionnaire> findAll() {
-        var Query = QueriesUser.SELECT_WHERE.getQuery();
+        var Query = QueriesUser.SELECT_ALL.getQuery();
         List<Gestionnaire> gestionnaires = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
             var result = statement.executeQuery();
-            if(result.next()) {
-                gestionnaires = createListInstance(result);
+            while( result.next() ){
+                gestionnaires.add( createInstance(result) );
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -64,49 +56,81 @@ public class UserDao implements IUserDao {
     }
 
     @Override
-    public void save(@NonNull Gestionnaire gestionnaire) {
+    public boolean save(@NonNull Gestionnaire gestionnaire) {
         var Query = QueriesUser.INSERT_SIMPLE.getQuery();
+        boolean f =false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
             statement.setString(1, gestionnaire.getNom());
             statement.setString(2, gestionnaire.getPrenom());
             statement.setString(3, gestionnaire.getTelephone());
-            statement.setString(4, gestionnaire.getLogin());
-            statement.setString(5, gestionnaire.getMotdepasse());
-            statement.executeUpdate();
+            statement.setString(4, gestionnaire.getMotdepasse());
+            statement.setString(5, gestionnaire.getLogin());
+           int i = statement.executeUpdate();
+           if (i ==1){
+               f= true;
+           }
         }catch (Exception e){
             e.printStackTrace();
         }
-
+        return f;
     }
 
     @Override
-    public void update(@NonNull Gestionnaire gestionnaire) {
+    public boolean update(@NonNull Gestionnaire gestionnaire) {
         var Query = QueriesUser.UPDATE_SIMPLE.getQuery();
+        boolean f =false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
-            statement.setString(1, gestionnaire.getID());
+            statement.setInt(1, gestionnaire.getId());
             statement.setString(2, gestionnaire.getNom());
             statement.setString(3, gestionnaire.getPrenom());
             statement.setString(4, gestionnaire.getTelephone());
-            statement.setString(5, gestionnaire.getLogin());
-            statement.setString(6, gestionnaire.getMotdepasse());
+            statement.setString(5, gestionnaire.getMotdepasse());
+            statement.setString(6, gestionnaire.getLogin());
+
             statement.executeUpdate();
+            int i = statement.executeUpdate();
+            if (i ==1){
+                f= true;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
-
+        return f;
     }
 
     @Override
-    public void delete(@NonNull Integer idGestionnaire) {
+    public boolean delete(@NonNull Integer Id) {
         var Query = QueriesUser.DELETE_SIMPLE.getQuery();
+        boolean f =false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
-            statement.setInt(1, idGestionnaire);
-            statement.executeUpdate();
+            statement.setInt(1, Id);
+            int i = statement.executeUpdate();
+            if (i == 1){
+                f= true;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
+        return f;
+    }
+
+    @Override
+    public boolean deleteByLogin(@NonNull String login) {
+        var Query = QueriesUser.DELETE_Login.getQuery();
+        boolean f =false;
+        try {
+            PreparedStatement statement = connection.prepareStatement(Query);
+            statement.setString(1, login);
+            int i = statement.executeUpdate();
+            if (i == 1){
+                f= true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return f;
     }
 }

@@ -10,9 +10,10 @@ public interface IUserDao {
 
    public List<Gestionnaire> findAll();
 
-   public void save(@NonNull Gestionnaire gestionnaire);
+   public boolean save(@NonNull Gestionnaire gestionnaire);
 
-   public void update(@NonNull Gestionnaire gestionnaire);
+   public boolean update(@NonNull Gestionnaire gestionnaire);
 
-   public void delete(@NonNull Integer idGestionnaire);
+   public boolean delete(@NonNull Integer Id);
+   public boolean deleteByLogin(@NonNull String login);
 }
