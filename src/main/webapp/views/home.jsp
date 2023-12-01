@@ -88,7 +88,7 @@
                     <div class="flex align-items-center justify-content-between py-2 px-3 gap-2">
                         <div class="flex align-items-center gap-2">
                             <i class="bi bi-skip-start"></i>
-                            <span class="font-small text-gray-900 white-space-nowrap">Action</span>
+                            <span class="font-small text-gray-900 white-space-nowrap">Vente</span>
                         </div>
                         <div class="flex align-items-center gap-2">
                             <span class="font-small text-gray-900 white-space-nowrap"></span>
@@ -97,9 +97,9 @@
                 </div>
                 <div>
                     <div class="flex align-items-center justify-content-center pt-2 px-3 gap-2">
-                        <a class="p-3 flex align-items-center justify-content-center w-7 gap-2 bg-white border-1 shadow-1 cursor-pointer hover:bg-black-alpha-10 transition-duration-200"
+                        <a href="HomeVenteServlet" class="p-3 flex align-items-center justify-content-center w-7 gap-2 bg-white border-1 shadow-1 cursor-pointer hover:bg-black-alpha-10 transition-duration-200"
                            style="border-radius: 50px;text-decoration: none; color: black;">
-                            <span class="font-medium text-gray-900 white-space-nowrap">Ma Journee</span>
+                            <span class="font-medium text-gray-900 white-space-nowrap">Vente</span>
                         </a>
                     </div>
                 </div>

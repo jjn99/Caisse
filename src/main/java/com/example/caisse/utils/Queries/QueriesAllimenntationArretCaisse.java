@@ -2,13 +2,13 @@ package com.example.caisse.utils.Queries;
 
 public enum QueriesAllimenntationArretCaisse {
 
-    SELECT_ID("SELECT * FROM actionCaisse WHERE id = ?;"),
-    SELECT_ID_CAISSE("SELECT * FROM actionCaisse WHERE idCaisse = ?;"),
-    SELECT_TYPE("SELECT * FROM actionCaisse WHERE type = ?;"),
-    SELECT_ALL("SELECT * FROM actionCaisse ORDER BY type ASC;"),
-    INSERT_SIMPLE("INSERT INTO actionCaisse(type,montant_total,date,idCaisse,commentaire) VALUES (?,?,?,?,?);"),
-    UPDATE_SIMPLE("UPDATE actionCaisse SET libelle = ?,montant_total = ?,date = ?, idCaisse = ?, commentaire = ? WHERE id = ?;"),
-    DELETE_SIMPLE("DELETE FROM actionCaisse WHERE id = ?;");
+    SELECT_ID("SELECT * FROM decompte WHERE Id = ?;"),
+    SELECT_TYPE("SELECT * FROM decompte WHERE type = ?;"),
+    SELECT_ID_CAISSE("SELECT * FROM decompte WHERE idCaisse =?;"),
+    SELECT_ALL("SELECT * FROM decompte ORDER BY type ASC;"),
+    INSERT_SIMPLE("INSERT INTO decompte(type,nb10000,nb5000,nb2000,nb1000,nb500,nb250,nb200,nb100,nb50,nb25,montanttotal,idcaisse) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);"),
+    UPDATE_SIMPLE("UPDATE decompte SET Id =?, type = ?,nb10000 = ?,nb5000 = ?, nb2000 = ?, nb1000 = ?,nb500 = ?,nb250 = ?,nb200 = ?,nb100=?,nb50 = ?,nb25 =?,montanttotal =?, idcaisse =? WHERE Id = ?;"),
+    DELETE_SIMPLE("DELETE FROM actionCaisse WHERE Id = ?;");
 
     private final String query;
     QueriesAllimenntationArretCaisse(String query) {

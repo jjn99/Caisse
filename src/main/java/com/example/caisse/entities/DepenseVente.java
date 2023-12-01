@@ -17,11 +17,10 @@ import java.util.Date;
 public class DepenseVente {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String ID;
-    private String libelle;
+    private String Id;
     private float montantEntrants;
     private float montantSortants;
-    private String beneficiaires;
+    private String beneficiaire;
     private String adresse;
-    private Date date ;
+    private String date ;
 }

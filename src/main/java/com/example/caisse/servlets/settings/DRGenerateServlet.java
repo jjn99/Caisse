@@ -66,7 +66,7 @@ public class DRGenerateServlet extends HttpServlet {
     }
 
     private void addTableHeader(PdfPTable table) {
-        Stream.of("Libelle","Beneficiaire","Montant","Adresse Beneficiaire").forEach(columnTitle -> {
+        Stream.of("Libelle","Fournisseur","Montant","Adresse Fournisseur").forEach(columnTitle -> {
             PdfPCell header = new PdfPCell();
             header.setBackgroundColor(BaseColor.LIGHT_GRAY);
             header.setBorderWidth(2);
@@ -90,7 +90,6 @@ public class DRGenerateServlet extends HttpServlet {
                 return dataFont;
             default:
                 return new Font();
-
         }
     }
 

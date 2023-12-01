@@ -33,6 +33,7 @@
                             <input
                                     name="nom"
                                     type="text"
+                                    required
                                     value="<%= user.getNom()%>"
                                     class="w-full md:w-30rem mb-3 form-control"
                             />
@@ -43,6 +44,7 @@
                             <input
                                     name="prenom"
                                     type="text"
+                                    required
                                     value="<%= user.getPrenom()%>"
                                     class="w-full md:w-30rem mb-3 form-control"
                             />
@@ -55,6 +57,7 @@
                             <input
                                     name="login"
                                     type="text"
+                                    required
                                     value="<%= user.getLogin()%>"
                                     class="w-full md:w-30rem mb-3 form-control"
                             />
@@ -65,6 +68,7 @@
                             <input
                                     name="telephone"
                                     type="text"
+                                    required
                                     value="<%= user.getTelephone()%>"
                                     class="w-full md:w-30rem mb-3 form-control"
                             />

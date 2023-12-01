@@ -27,6 +27,7 @@
                         <input
                                 name="nom"
                                 type="text"
+                                required
                                 class="w-full md:w-30rem mb-3 form-control"
                         />
                     </div>
@@ -36,6 +37,7 @@
                         <input
                                 name="prenom"
                                 type="text"
+                                required
                                 class="w-full md:w-30rem mb-3 form-control"
                         />
                     </div>
@@ -44,6 +46,7 @@
                         <input
                                 name="telephone"
                                 type="text"
+                                required
                                 class="w-full md:w-30rem mb-3 form-control"
                         />
                     </div>
@@ -55,6 +58,7 @@
                         <input
                                 name="login"
                                 type="text"
+                                required
                                 class="w-full md:w-30rem mb-3 form-control"
                         />
                     </div>
@@ -64,6 +68,7 @@
                         <input
                                 name="password"
                                 type="password"
+                                required
                                 class="w-full md:w-30rem mb-3 form-control"
                         />
                     </div>

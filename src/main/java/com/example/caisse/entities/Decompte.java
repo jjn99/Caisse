@@ -1,19 +1,32 @@
 package com.example.caisse.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.*;
+
+@Entity
+@ToString
+@Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Decompte {
-    private Integer id;
+    @jakarta.persistence.Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private Integer Id;
     private String type;
-    private Integer nb_10000;
-    private Integer nb_5000;
-    private Integer nb_2000;
-    private Integer nb_1000;
-    private Integer nb_500;
-    private Integer nb_250;
-    private Integer nb_200;
-    private Integer nb_100;
-    private Integer nb_50;
-    private Integer nb_25;
-    private Integer nb_5;
-    private Integer idCaisse;
-    private Integer idActions;
+    private Integer nb10000;
+    private Integer nb5000;
+    private Integer nb2000;
+    private Integer nb1000;
+    private Integer nb500;
+    private Integer nb250;
+    private Integer nb200;
+    private Integer nb100;
+    private Integer nb50;
+    private Integer nb25;
+    private Integer montanttotal;
+    private Integer idcaisse;
 }

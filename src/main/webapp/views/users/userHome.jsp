@@ -18,8 +18,13 @@
 <div class="container-fluid h-7rem p-4" style="background-color: #f5f7fa;">
     <div class="flex pt-4 px-3 gap-2 ">
         <a href="AddUserServlet" class="btn p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
-                style="border-radius: 20px; background-color: #425DAE;">
+                style="background-color: #425DAE;">
             <span class="font-medium text-gray-900 w-5rem white-space-nowrap" style=" color: white !important;">Ajouter</span>
+        </a>
+        <a href="UserGenerateServlet" type="button" class="btn float-left p-2 "
+           style="background-color: #425DAE;color: white;">
+            <i class="bi bi-download" aria-hidden="true"></i>
+            <span class="font-medium text-gray-900 w-5rem white-space-nowrap" style=" color: white !important;">Telecharger</span>
         </a>
     </div>
 </div>
@@ -55,11 +60,11 @@
                                                 <th>
                                                     <div class="flex align-items-center justify-content-center pt-1 px-3 gap-2">
                                                         <a href="UpdateUserServlet?login=${user.getLogin()}" class="btn p-2 flex align-items-center justify-content-center gap-2 border-1 shadow-1 cursor-pointer "
-                                                                style="border-radius: 20px; background-color: #425DAE; ">
+                                                                style=" background-color: #425DAE; ">
                                                             <span class="font-medium text-gray-900 white-space-nowrap" style="color: white !important;">Modifier</span>
                                                         </a>
                                                         <a href="DeleteUser?login=${user.getLogin()}" class="btn p-2 flex align-items-center justify-content-center gap-2 border-1 shadow-1 cursor-pointer "
-                                                                style="border-radius: 20px; background-color: #ED5867;">
+                                                                style=" background-color: #ED5867;">
                                                             <span class="font-medium text-gray-900 white-space-nowrap" style="color: white !important;">Supprimer</span>
                                                         </a>
                                                     </div>

@@ -45,8 +45,6 @@
                                 >
                                     <button class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
                                             style="background-color: #425DAE;border-radius: 10px;height: 3rem; color:white; text-align: center" ><span>Enregistrer</span></button>
-                                    <a href="HomeCaisseServlet" class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
-                                       style="background-color: #d9342b;border-radius: 10px;height: 3rem; color:white; text-align: center" ><span>Annuler</span></a>
                                 </div>
                             </div>
                         </div>
@@ -56,6 +54,15 @@
 
         </div>
         <div class="col-md-8">
+            <div class="container-fluid h-7rem p-4" style="background-color: #f5f7fa;">
+                <div class="flex pt-4 px-3 gap-2 ">
+                    <a href="CaisseGenerateServlet" type="button" class="btn float-left p-2 "
+                       style="background-color: #425DAE;color: white;">
+                        <i class="bi bi-download" aria-hidden="true"></i>
+                        <span class="font-medium text-gray-900 w-5rem white-space-nowrap" style=" color: white !important;">Telecharger</span>
+                    </a>
+                </div>
+            </div>
             <section class="intro mt-1 p-1">
                 <div class="bg-image " >
                     <div class="mask d-flex align-items-center">
@@ -83,11 +90,11 @@
                                                             <th>
                                                                 <div class="flex align-items-center justify-content-center pt-1 px-3 gap-2">
                                                                     <a href="UpdateCaisseServlet?libelle=${caisse.getLibelle()}" class="btn p-2 flex align-items-center justify-content-center gap-2 border-1 shadow-1 cursor-pointer "
-                                                                       style="border-radius: 20px; background-color: #425DAE; ">
+                                                                       style="background-color: #425DAE; ">
                                                                         <span class="font-medium text-gray-900 white-space-nowrap" style="color: white !important;">Modifier</span>
                                                                     </a>
                                                                     <a href="DeleteCaisse?login=${caisse.getId()}" class="btn p-2 flex align-items-center justify-content-center gap-2 border-1 shadow-1 cursor-pointer "
-                                                                       style="border-radius: 20px; background-color: #ED5867;">
+                                                                       style="background-color: #ED5867;">
                                                                         <span class="font-medium text-gray-900 white-space-nowrap" style="color: white !important;">Supprimer</span>
                                                                     </a>
                                                                 </div>
