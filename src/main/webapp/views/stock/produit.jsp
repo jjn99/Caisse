@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: 13476
-  Date: 29/11/2023
-  Time: 13:57
+  Date: 30/11/2023
+  Time: 22:50
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -17,9 +17,13 @@
 <%@include file="../../assets/components/navbar.jsp" %>
 <div class="container-fluid h-7rem p-4" style="background-color: #f5f7fa;">
     <div class="flex pt-4 px-3 gap-2 ">
-        <a href="AddUserServlet" class="btn p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
-                style="border-radius: 20px; background-color: #425DAE;">
-            <span class="font-medium text-gray-900 w-5rem white-space-nowrap" style=" color: white !important;">Ajouter</span>
+        <a href="AddDepenseReaprovisionnement" class="btn p-2 m-1 flex gap-2 border-1 shadow-1 cursor-pointer "
+           style="border-radius: 20px; background-color: #425DAE;">
+            <span class="font-medium text-gray-900 w-auto white-space-nowrap" style=" color: white !important;">Nouveau Reaprovisionnement</span>
+        </a>
+        <a href="AddProduitServlet" class="btn p-2 m-1 flex gap-2 border-1 shadow-1 cursor-pointer "
+           style="border-radius: 20px; background-color: #425DAE;">
+            <span class="font-medium text-gray-900 w-auto white-space-nowrap" style=" color: white !important;">Nouveau Produit</span>
         </a>
     </div>
 </div>
@@ -35,31 +39,33 @@
                                     <table class="table table-striped mb-0">
                                         <thead style="background-color: #425DAE; color: white;">
                                         <tr>
-                                            <th scope="col">Login</th>
-                                            <th scope="col">Nom</th>
-                                            <th scope="col">Prenom</th>
-                                            <th scope="col">Telephone</th>
+                                            <th scope="col">Code Product</th>
+                                            <th scope="col">Libelle</th>
+                                            <th scope="col">Prix</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Type</th>
                                             <th scope="col" style="text-align: center;">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${users}" var="user">
+                                        <c:forEach items="${produits}" var="produit">
 
                                             <tr>
                                                 <th>
-                                                    ${user.getLogin()}
+                                                        ${produit.getCodeproduct()}
                                                 </th>
-                                                <th>${user.getNom()}</th>
-                                                <th>${user.getPrenom()}</th>
-                                                <th>${user.getTelephone()}</th>
+                                                <th>${produit.getLibelle()}</th>
+                                                <th>${produit.getPrice()}</th>
+                                                <th>${produit.getQuantity()}</th>
+                                                <th>${produit.getTypeproduct()}</th>
                                                 <th>
                                                     <div class="flex align-items-center justify-content-center pt-1 px-3 gap-2">
-                                                        <a href="UpdateUserServlet?login=${user.getLogin()}" class="btn p-2 flex align-items-center justify-content-center gap-2 border-1 shadow-1 cursor-pointer "
-                                                                style="border-radius: 20px; background-color: #425DAE; ">
+                                                        <a href="UpdateProduitServlet?codeProduct=${produit.getCodeproduct()}" class="btn p-2 flex align-items-center justify-content-center gap-2 border-1 shadow-1 cursor-pointer "
+                                                           style="border-radius: 20px; background-color: #425DAE; ">
                                                             <span class="font-medium text-gray-900 white-space-nowrap" style="color: white !important;">Modifier</span>
                                                         </a>
-                                                        <a href="DeleteUser?login=${user.getLogin()}" class="btn p-2 flex align-items-center justify-content-center gap-2 border-1 shadow-1 cursor-pointer "
-                                                                style="border-radius: 20px; background-color: #ED5867;">
+                                                        <a href="DeleteProduitServlet?Id=${produit.getId()}" class="btn p-2 flex align-items-center justify-content-center gap-2 border-1 shadow-1 cursor-pointer "
+                                                           style="border-radius: 20px; background-color: #ED5867;">
                                                             <span class="font-medium text-gray-900 white-space-nowrap" style="color: white !important;">Supprimer</span>
                                                         </a>
                                                     </div>

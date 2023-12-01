@@ -21,7 +21,7 @@ public class ProduitsDao implements IProduitsDao {
         return new Produits(
                 result.getInt(1),
                 result.getString(2),
-                result.getFloat(3),
+                result.getInt(3),
                 result.getInt(4),
                 result.getString(5),
                 result.getString(6),
@@ -124,51 +124,66 @@ public class ProduitsDao implements IProduitsDao {
     }
 
     @Override
-    public void save(@NonNull Produits produits) {
+    public boolean save(@NonNull Produits produits) {
         var Query = QueriesProduits.INSERT_SIMPLE.getQuery();
+        boolean f =false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
-            statement.setString(1, produits.getCodeProduct());
-            statement.setString(2, produits.getLibelle());
+            statement.setString(1, produits.getCodeproduct());
+            statement.setInt(2, produits.getPrice());
+            statement.setInt(3, produits.getQuantity());
+            statement.setString(4, produits.getTypeproduct());
+            statement.setString(5, produits.getDescription());
+            statement.setInt(6, produits.getIdreaprovisionnement());
+            statement.setString(7, produits.getLibelle());
+            int i = statement.executeUpdate();
+            if (i ==1){
+                f= true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return f;
+    }
+
+    @Override
+    public boolean update(@NonNull Produits produits) {
+        var Query = QueriesProduits.UPDATE_SIMPLE.getQuery();
+        boolean f=false;
+        try {
+            PreparedStatement statement = connection.prepareStatement(Query);
+            statement.setInt(1, produits.getId());
+            statement.setString(2, produits.getCodeproduct());
             statement.setFloat(3, produits.getPrice());
             statement.setInt(4, produits.getQuantity());
-            statement.setString(5, produits.getType());
+            statement.setString(5, produits.getTypeproduct());
             statement.setString(6, produits.getDescription());
-            statement.setInt(7, produits.getIdReaprovisionnement());
-            statement.executeUpdate();
+            statement.setInt(7, produits.getIdreaprovisionnement());
+            statement.setString(8, produits.getLibelle());
+            int i = statement.executeUpdate();
+            if (i ==1){
+                f= true;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
+        return f;
     }
 
     @Override
-    public void update(@NonNull Produits produits) {
-        var Query = QueriesProduits.UPDATE_SIMPLE.getQuery();
-        try {
-            PreparedStatement statement = connection.prepareStatement(Query);
-            statement.setInt(1, produits.getID());
-            statement.setString(2, produits.getCodeProduct());
-            statement.setString(3, produits.getLibelle());
-            statement.setFloat(4, produits.getPrice());
-            statement.setInt(5, produits.getQuantity());
-            statement.setString(6, produits.getType());
-            statement.setString(7, produits.getDescription());
-            statement.setInt(8, produits.getIdReaprovisionnement());
-            statement.executeUpdate();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void delete(@NonNull Integer idProduits) {
+    public boolean delete(@NonNull Integer idProduits) {
         var Query = QueriesProduits.DELETE_SIMPLE.getQuery();
+        boolean f=false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
             statement.setInt(1, idProduits);
-            statement.executeUpdate();
+            int i = statement.executeUpdate();
+            if (i == 1){
+                f= true;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
+        return f;
     }
 }

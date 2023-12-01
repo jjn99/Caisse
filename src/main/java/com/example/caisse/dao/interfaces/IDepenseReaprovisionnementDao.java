@@ -11,16 +11,16 @@ public interface IDepenseReaprovisionnementDao {
 
     public List<DepenseReaprovisionnement> findByLibelle(@NonNull String libelle);
 
-    public DepenseReaprovisionnement findById(@NonNull Integer id);
+    public DepenseReaprovisionnement findById(@NonNull Integer Id);
 
     public List<DepenseReaprovisionnement> findByBeneficiaire(@NonNull String Beneficiaire);
 
-    public void add(DepenseReaprovisionnement newDepenseReaprovision);
+    public boolean add(DepenseReaprovisionnement newDepenseReaprovision);
 
-    public void update(DepenseReaprovisionnement oldDepenseRe);
+    public boolean update(DepenseReaprovisionnement oldDepenseRe);
 
 //    public void updateMontant(@NonNull float newMontant, @NonNull Integer id);
 
-    public void delete(@NonNull Integer id);
+    public boolean delete(@NonNull Integer id);
 
 }

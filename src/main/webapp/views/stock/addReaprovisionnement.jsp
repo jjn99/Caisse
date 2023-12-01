@@ -1,9 +1,8 @@
-<%@ page import="com.example.caisse.dao.impl.UserDao" %>
-<%@ page import="com.example.caisse.entities.Gestionnaire" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: 13476
   Date: 30/11/2023
-  Time: 12:02
+  Time: 23:06
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -18,55 +17,50 @@
 <%@ include file="../../assets/components/navbar.jsp"%>
 <div class="surface-ground mt-3 flex align-items-center justify-content-center overflow-hidden">
     <div class="flex flex-column align-items-center justify-content-center">
-        <%
-            String login = request.getParameter("login");
-            UserDao userDao = new UserDao();
-            Gestionnaire user = userDao.findByLogin(login);
-        %>
-        <form method="post" action="UpdateUserServlet">
+        <form method="post" action="AddDepenseReaprovisionnement">
             <div class="flex flex-wrap">
                 <div class="text-900 text-3xl font-medium text-center mb-3">FORMULAIRE</div>
                 <div class="col-12">
                     <div class="grid">
                         <div class="field col-12 col-md-6">
-                            <label class="block text-900 text-xl font-medium mb-2">Nom</label>
+                            <label class="block text-900 text-xl font-medium mb-2">Libelle</label>
                             <input
-                                    name="nom"
+                                    name="libelle"
                                     type="text"
-                                    value="<%= user.getNom()%>"
+                                    placeholder="Approvisonnement en ..."
                                     class="w-full md:w-30rem mb-3 form-control"
+                                    required
                             />
                         </div>
 
                         <div class="field col-12 col-md-6">
-                            <label class="block text-900 text-xl font-medium mb-2">Prenom</label>
+                            <label class="block text-900 text-xl font-medium mb-2">Montant(F CFA)</label>
                             <input
-                                    name="prenom"
-                                    type="text"
-                                    value="<%= user.getPrenom()%>"
+                                    name="montant"
+                                    type="number"
                                     class="w-full md:w-30rem mb-3 form-control"
+                                    required
                             />
                         </div>
                     </div>
 
                     <div class="grid">
                         <div class="field col-12 col-md-6">
-                            <label class="block text-900 text-xl font-medium mb-2">Login</label>
+                            <label class="block text-900 text-xl font-medium mb-2">Beneficiaires</label>
                             <input
-                                    name="login"
+                                    name="beneficiaires"
                                     type="text"
-                                    value="<%= user.getLogin()%>"
                                     class="w-full md:w-30rem mb-3 form-control"
+                                    required
                             />
                         </div>
-
                         <div class="field col-12 col-md-6">
-                            <label class="block text-900 text-xl font-medium mb-2">Telephone</label>
+                            <label class="block text-900 text-xl font-medium mb-2">Adresse</label>
                             <input
-                                    name="telephone"
+                                    name="adresse"
                                     type="text"
-                                    value="<%= user.getTelephone()%>"
                                     class="w-full md:w-30rem mb-3 form-control"
+                                    required
                             />
                         </div>
                     </div>
@@ -77,7 +71,7 @@
             >
                 <button class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
                         style="background-color: #425DAE;border-radius: 10px;height: 3rem; color:white; text-align: center" ><span>Enregistrer</span></button>
-                <a href="HomeUserServlet" class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
+                <a href="AddDepenseReaprovisionnement" class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
                    style="background-color: #d9342b;border-radius: 10px;height: 3rem; color:white; text-align: center" ><span>Annuler</span></a>
             </div>
         </form>

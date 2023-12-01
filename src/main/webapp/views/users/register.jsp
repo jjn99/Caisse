@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Caisse-Pro</title>
     <style>
         <%@ include file="../../styles/style.css" %>
     </style>
@@ -74,7 +74,7 @@
                 class="flex align-items-center justify-content-center pt-2 px-3 gap-2"
         >
             <button class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
-                    style="background-color: #425DAE;border-radius: 10px;height: 3rem; color:white; text-align: center" ><span>S'identifier</span></button>
+                    style="background-color: #425DAE;border-radius: 10px;height: 3rem; color:white; text-align: center" ><span>Enregistrer</span></button>
             <a href="HomeUserServlet" class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
                     style="background-color: #d9342b;border-radius: 10px;height: 3rem; color:white; text-align: center" ><span>Annuler</span></a>
         </div>

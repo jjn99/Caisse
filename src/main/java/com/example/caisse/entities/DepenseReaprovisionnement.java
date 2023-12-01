@@ -17,10 +17,10 @@ import java.sql.Date;
 public class DepenseReaprovisionnement {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private Integer ID;
+    private Integer Id;
     private String libelle;
-    private float montant;
+    private Integer montant;
     private String beneficiaires;
     private String adresse;
-    private Date date ;
+    private String  date ;
 }

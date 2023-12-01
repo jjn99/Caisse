@@ -12,12 +12,12 @@ import lombok.*;
 public class Produits {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private Integer ID;
-    private String codeProduct;
-    private float price;
+    private Integer Id;
+    private String codeproduct;
+    private Integer price;
     private int quantity;
-    private String type;
+    private String typeproduct;
     private String description;
-    private Integer idReaprovisionnement;
+    private Integer idreaprovisionnement;
     private String libelle;
 }

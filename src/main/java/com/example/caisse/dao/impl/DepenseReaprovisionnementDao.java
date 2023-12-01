@@ -24,10 +24,10 @@ public class DepenseReaprovisionnementDao implements IDepenseReaprovisionnementD
         return new DepenseReaprovisionnement(
                 result.getInt(1),
                 result.getString(2),
-                result.getFloat(3),
+                result.getInt(3),
                 result.getString(4),
                 result.getString(5),
-                result.getDate(6));
+                result.getString(6));
     }
     @Override
     public List<DepenseReaprovisionnement> findAll() {
@@ -52,12 +52,12 @@ public class DepenseReaprovisionnementDao implements IDepenseReaprovisionnementD
     }
 
     @Override
-    public DepenseReaprovisionnement findById(@NonNull Integer id) {
+    public DepenseReaprovisionnement findById(@NonNull Integer Id) {
         var Query = QueriesDepenseReaprovisionnement.SELECT_ID.getQuery();
         DepenseReaprovisionnement depenseReaprovisionnement = null;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
-            statement.setInt(1,id);
+            statement.setInt(1,Id);
             var result = statement.executeQuery();
             if(result.next()) {
                 depenseReaprovisionnement = createInstance(result);
@@ -90,47 +90,62 @@ public class DepenseReaprovisionnementDao implements IDepenseReaprovisionnementD
     }
 
     @Override
-    public void add(DepenseReaprovisionnement newDepenseReaprovision) {
+    public boolean add(DepenseReaprovisionnement newDepenseReaprovision) {
         var Query = QueriesDepenseReaprovisionnement.INSERT_SIMPLE.getQuery();
+        boolean f=false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
             statement.setString(1, newDepenseReaprovision.getLibelle());
-            statement.setFloat(2, newDepenseReaprovision.getMontant());
+            statement.setInt(2, newDepenseReaprovision.getMontant());
             statement.setString(3, newDepenseReaprovision.getBeneficiaires());
             statement.setString(4, newDepenseReaprovision.getAdresse());
-            statement.setDate(5, newDepenseReaprovision.getDate());
-            statement.executeUpdate();
+            statement.setString(5, newDepenseReaprovision.getDate());
+           int i= statement.executeUpdate();
+           if (i == 1){
+               f = true;
+           }
         }catch (Exception e){
             e.printStackTrace();
         }
+        return f;
     }
 
     @Override
-    public void update(DepenseReaprovisionnement oldDepenseRe) {
+    public boolean update(DepenseReaprovisionnement oldDepenseRe) {
         var Query = QueriesDepenseReaprovisionnement.UPDATE_SIMPLE.getQuery();
+        boolean f = false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
-            statement.setInt(1, oldDepenseRe.getID());
+            statement.setInt(1, oldDepenseRe.getId());
             statement.setString(2, oldDepenseRe.getLibelle());
-            statement.setFloat(3, oldDepenseRe.getMontant());
+            statement.setInt(3, oldDepenseRe.getMontant());
             statement.setString(4, oldDepenseRe.getBeneficiaires());
             statement.setString(5, oldDepenseRe.getAdresse());
-            statement.setDate(6, oldDepenseRe.getDate());
-            statement.executeUpdate();
+            statement.setString(6, oldDepenseRe.getDate());
+            int i = statement.executeUpdate();
+            if (i == 1){
+                f=true;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
+        return f;
     }
 
     @Override
-    public void delete(@NonNull Integer id) {
+    public boolean delete(@NonNull Integer id) {
         var Query = QueriesDepenseReaprovisionnement.DELETE_SIMPLE.getQuery();
+        boolean f=false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
             statement.setInt(1, id);
-            statement.executeUpdate();
+            int i=statement.executeUpdate();
+            if (i == 1){
+                f=true;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
+        return f;
     }
 }

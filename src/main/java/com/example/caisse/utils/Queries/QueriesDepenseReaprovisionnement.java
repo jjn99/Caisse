@@ -2,14 +2,14 @@ package com.example.caisse.utils.Queries;
 
 public enum QueriesDepenseReaprovisionnement {
 
-    SELECT_WHERE("SELECT * FROM depenseReaprovisionnement WHERE libelle = ?;"),
-    SELECT_ALL("SELECT * FROM depenseReaprovisionnement ORDER BY libelle ASC;"),
-    SELECT_ID("SELECT * FROM depenseReaprovisionnement WHERE id = ?;"),
-    SELECT_BENEFICIAIRE("SELECT * FROM depenseReaprovisionnement WHERE beneficiaires = ? ORDER BY libelle ASC;"),
-    INSERT_SIMPLE("INSERT INTO depenseReaprovisionnement(libelle,montant,beneficiaires,adresse,date) VALUES(?,?,?,?,?);"),
-    UPDATE_MONTANT("UPDATE depenseReaprovisionnement SET montant = ?,WHERE id = ?;"),
-    UPDATE_SIMPLE("UPDATE depenseReaprovisionnement SET libelle = ?, montant = ?, beneficiaires = ?, adresse = ?, date = ? WHERE id = ?;"),
-    DELETE_SIMPLE("DELETE FROM depenseReaprovisionnement WHERE id = ?;");
+    SELECT_WHERE("SELECT * FROM depensereaprovisionnement WHERE libelle = ?;"),
+    SELECT_ALL("SELECT * FROM depensereaprovisionnement ORDER BY libelle ASC;"),
+    SELECT_ID("SELECT * FROM depensereaprovisionnement WHERE Id = ?;"),
+    SELECT_BENEFICIAIRE("SELECT * FROM depensereaprovisionnement WHERE beneficiaires = ? ORDER BY libelle ASC;"),
+    INSERT_SIMPLE("INSERT INTO depensereaprovisionnement(libelle,montant,beneficiaires,adresse,date) VALUES(?,?,?,?,?);"),
+    UPDATE_MONTANT("UPDATE depensereaprovisionnement SET montant = ?,WHERE Id = ?;"),
+    UPDATE_SIMPLE("UPDATE depensereaprovisionnement SET Id = ? , libelle = ?, montant = ?, beneficiaires = ?, adresse = ?, date = ? WHERE Id = ?;"),
+    DELETE_SIMPLE("DELETE FROM depensereaprovisionnement WHERE Id = ?;");
 
     private final String query;
     QueriesDepenseReaprovisionnement(String query) {

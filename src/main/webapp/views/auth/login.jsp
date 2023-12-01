@@ -9,7 +9,7 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <html>
 <head>
-    <title>Login</title>
+    <title>Caisse-Pro</title>
   <style>
       <%@ include file="../../styles/style.css"%>
   </style>

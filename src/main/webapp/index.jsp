@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Caisse-Pro</title>
 </head>
 <body>
     <%@ include file="views/auth/login.jsp" %>

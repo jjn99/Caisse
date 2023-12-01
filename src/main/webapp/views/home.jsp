@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Home</title>
+    <title>Caisse-Pro</title>
     <style>
         <%@ include file="../styles/style.css" %>
     </style>
@@ -17,7 +17,6 @@
 <%@include file="../assets/components/navbar.jsp" %>
     <div class="container align-items-center justify-content-center  overflow-hidden min-h-screen min-w-screen">
     <div class="grid p-6 ">
-
         <div class="col m-2 p-2 border-round-xl" style="background: white;border: 1px solid #ED5867;border-radius: .25rem; width: 250px;">
             <div class="bg-white p-2">
                 <div class="mt-3 relative text-center w-full flex align-items-center justify-content-center">
@@ -32,7 +31,7 @@
                             <span class="text-gray-900 white-space-nowrap">Nombre:</span>
                         </div>
                         <div class="flex align-items-center gap-2">
-                            <span class="text-gray-900 white-space-nowrap">00</span>
+                            <span class="text-gray-900 white-space-nowrap">${caisses}</span>
                         </div>
                     </div>
                 </div>
@@ -62,14 +61,14 @@
                         </div>
                         <div class="flex align-items-center gap-2">
                             <span class="font-small text-gray-900 white-space-nowrap">
-                                ${produits}
+                                ${products}
                             </span>
                         </div>
                     </div>
                 </div>
                 <div >
                     <div class="flex align-items-center justify-content-center pt-2 px-3 gap-2">
-                        <a class="p-3 flex align-items-center justify-content-center w-7 gap-2 bg-white border-1 shadow-1 cursor-pointer hover:bg-black-alpha-10 transition-duration-200"
+                        <a href="HomeProduits" class="p-3 flex align-items-center justify-content-center w-7 gap-2 bg-white border-1 shadow-1 cursor-pointer hover:bg-black-alpha-10 transition-duration-200"
                            style="border-radius: 50px;text-decoration: none; color: black;">
                             <span class="font-medium text-gray-900 white-space-nowrap">Stock</span>
                         </a>
@@ -158,7 +157,7 @@
                 </div>
                 <div >
                     <div class="flex align-items-center justify-content-center pt-2 px-3 gap-2">
-                        <a class="p-3 flex align-items-center justify-content-center w-7 gap-2 bg-white border-1 shadow-1 cursor-pointer hover:bg-black-alpha-10 transition-duration-200"
+                        <a href="DRGenerateServlet" class="p-3 flex align-items-center justify-content-center w-7 gap-2 bg-white border-1 shadow-1 cursor-pointer hover:bg-black-alpha-10 transition-duration-200"
                            style="border-radius: 50px;text-decoration: none; color: black;">
                             <span class="font-medium text-gray-900 white-space-nowrap">Parametres</span>
                         </a>

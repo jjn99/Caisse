@@ -19,6 +19,12 @@ public class Caisse {
     private boolean actif;
     private Integer montants;
 
+    public Caisse(String libelle, boolean actif, Integer montant) {
+        this.libelle = libelle;
+        this.actif = actif;
+        this.montants = montants;
+    }
+
     public Integer getId() {
         return id;
     }

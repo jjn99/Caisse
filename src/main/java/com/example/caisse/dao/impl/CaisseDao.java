@@ -80,7 +80,8 @@ public class CaisseDao implements ICaisseDao {
             PreparedStatement statement = connection.prepareStatement(Query);
             statement.setString(1, caisse.getLibelle());
             statement.setBoolean(2, caisse.isActif());
-            statement.setDouble(3, caisse.getMontants());
+            statement.setInt(3, caisse.getMontants());
+            System.out.println(caisse.getMontants());
             int i = statement.executeUpdate();
             if (i ==1){
                 f= true;
@@ -100,7 +101,7 @@ public class CaisseDao implements ICaisseDao {
             statement.setInt(1, caisse.getId());
             statement.setString(2, caisse.getLibelle());
             statement.setBoolean(3, caisse.isActif());
-            statement.setDouble(4, caisse.getMontants());
+            statement.setInt(4, caisse.getMontants());
             statement.executeUpdate();
             int i = statement.executeUpdate();
             if (i ==1){
