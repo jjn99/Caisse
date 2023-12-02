@@ -4,7 +4,7 @@ public enum QueriesUser {
     SELECT_WHERE("SELECT * FROM gestionnaire WHERE login = ?;"),
     SELECT_ALL("SELECT * FROM gestionnaire ORDER BY login ASC;"),
     INSERT_SIMPLE("INSERT INTO gestionnaire(nom,prenom,telephone,motdepasse,login) VALUES (?,?,?,?,?);"),
-    UPDATE_SIMPLE("UPDATE gestionnaire SET Id = ?, nom = ?, prenom = ?, telephone = ?, motdepasse =?, login =? WHERE login = ?;"),
+    UPDATE_SIMPLE("UPDATE gestionnaire SET nom = ?, prenom = ?, telephone = ?, login =? WHERE id = ?;"),
     DELETE_SIMPLE("DELETE FROM gestionnaire WHERE Id = ?;"),
     DELETE_Login("DELETE FROM gestionnaire WHERE login = ?;");
 

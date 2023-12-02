@@ -2,14 +2,16 @@ package com.example.caisse.utils.Queries;
 
 public enum QueriesDepenseReaprovisionnement {
 
-    SELECT_WHERE("SELECT * FROM depensereaprovisionnement WHERE libelle = ?;"),
-    SELECT_ALL("SELECT * FROM depensereaprovisionnement ORDER BY libelle ASC;"),
-    SELECT_ID("SELECT * FROM depensereaprovisionnement WHERE Id = ?;"),
-    SELECT_BENEFICIAIRE("SELECT * FROM depensereaprovisionnement WHERE beneficiaires = ? ORDER BY libelle ASC;"),
-    INSERT_SIMPLE("INSERT INTO depensereaprovisionnement(libelle,montant,beneficiaires,adresse,date) VALUES(?,?,?,?,?);"),
-    UPDATE_MONTANT("UPDATE depensereaprovisionnement SET montant = ?,WHERE Id = ?;"),
-    UPDATE_SIMPLE("UPDATE depensereaprovisionnement SET Id = ? , libelle = ?, montant = ?, beneficiaires = ?, adresse = ?, date = ? WHERE Id = ?;"),
-    DELETE_SIMPLE("DELETE FROM depensereaprovisionnement WHERE Id = ?;");
+    SELECT_WHERE("SELECT * FROM depense WHERE libelle = ?;"),
+    SELECT_ALL("SELECT * FROM depense ORDER BY libelle ASC;"),
+    SELECT_CAISSE("SELECT * FROM depense WHERE idcaisse = ?;"),
+    SELECT_ID_CAISSE("SELECT * FROM depense WHERE idcaisse = ? AND typedepense = 'Crediter';"),
+    SELECT_ID("SELECT * FROM depense WHERE id = ?;"),
+    SELECT_BENEFICIAIRE("SELECT * FROM depense WHERE beneficiaires = ? ORDER BY libelle ASC;"),
+    INSERT_SIMPLE("INSERT INTO depense(libelle,montant,beneficiaires,adresse,date,idcaisse,typedepense) VALUES(?,?,?,?,?,?,?);"),
+    UPDATE_MONTANT("UPDATE depense SET montant = ?,id = ?;"),
+    UPDATE_SIMPLE("UPDATE depense SET  libelle = ?, montant = ?, beneficiaires = ?, adresse = ?, date = ?, typedepense=? WHERE id = ?;"),
+    DELETE_SIMPLE("DELETE FROM depense WHERE id = ?;");
 
     private final String query;
     QueriesDepenseReaprovisionnement(String query) {

@@ -19,9 +19,9 @@
 <div class="surface-ground mt-3 min-w-30rem flex align-items-center justify-content-center overflow-hidden">
     <div class="flex flex-column align-items-center justify-content-center">
         <%
-            String libelle = request.getParameter("libelle");
+            Integer id = Integer.parseInt(request.getParameter("id"));
             CaisseDao caisseDao = new CaisseDao();
-            Caisse caisse = caisseDao.findByLibelle(libelle);
+            Caisse caisse = caisseDao.findById(id);
         %>
         <img
                 src="./assets/images/iconCaisse.png"
@@ -32,6 +32,15 @@
             <div>
                 <div class="w-full surface-card" style="border-radius: 53px">
                     <div class="text-900 text-3xl font-medium text-center mb-3">FORMULAIRE</div>
+                    <c:if test="${ !empty error}">
+                        <div class="alert alert-danger h-max-15rem d-flex text-align-center" role="alert">
+                            <div class="row">
+                                <div>
+                                    <c:out value="${error}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </c:if>
                     <div>
                         <label class="block text-900 text-xl font-medium mb-2">Libelle</label>
                         <input

@@ -6,6 +6,9 @@ import lombok.NonNull;
 import java.util.List;
 
 public interface IDepenseReaprovisionnementDao {
+    public  List<DepenseReaprovisionnement> finsByIdCaisse(@NonNull Integer id);
+
+    public  List<DepenseReaprovisionnement> finsByCaisse(@NonNull Integer id);
 
     public List<DepenseReaprovisionnement> findAll();
 
@@ -18,8 +21,6 @@ public interface IDepenseReaprovisionnementDao {
     public boolean add(DepenseReaprovisionnement newDepenseReaprovision);
 
     public boolean update(DepenseReaprovisionnement oldDepenseRe);
-
-//    public void updateMontant(@NonNull float newMontant, @NonNull Integer id);
 
     public boolean delete(@NonNull Integer id);
 

@@ -15,8 +15,8 @@ public class DeleteCaisse extends HttpServlet {
     private final CaisseDao caisseDao = new CaisseDao();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer Id = Integer.parseInt(request.getParameter("Id"));
-        if (caisseDao.delete(Id)) {
+        String libelle = request.getParameter("libelle");
+        if (caisseDao.delete(libelle)) {
             request.setAttribute("Suppression", "Success");
             response.sendRedirect("HomeCaisseServlet");
         } else {

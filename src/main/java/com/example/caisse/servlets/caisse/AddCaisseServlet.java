@@ -33,7 +33,7 @@ public class AddCaisseServlet extends HttpServlet {
         Map<String, String> errors = new HashMap<>();
         Caisse caisse = caisseDao.findByLibelle(libelle);
         if(caisse != null) {
-            request.setAttribute("libelle_error", "Ce libelle est deja utilise!");
+            request.setAttribute("error", "Ce libelle est deja utilise!");
         }else {
             Caisse caisse1 = new Caisse();
             caisse1.setLibelle(libelle);

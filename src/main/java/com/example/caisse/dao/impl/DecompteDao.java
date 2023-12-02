@@ -46,19 +46,27 @@ public class DecompteDao implements IDecompteDao {
     @Override
     public List<Decompte> findByType(@NonNull String type) {
         var Query = QueriesAllimenntationArretCaisse.SELECT_TYPE.getQuery();
-        return getDecomptes(Query);
+        List<Decompte> decomptes = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(Query);
+            statement.setString(1,type);
+            var result = statement.executeQuery();
+            while( result.next() ){
+                decomptes.add( createInstance(result) );
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return decomptes;
     }
 
     @Override
     public List<Decompte> findByIdCaisse(@NonNull Integer Id) {
         var Query = QueriesAllimenntationArretCaisse.SELECT_ID_CAISSE.getQuery();
-        return getDecomptes(Query);
-    }
-
-    private List<Decompte> getDecomptes(String query) {
         List<Decompte> decomptes = new ArrayList<>();
         try {
-            PreparedStatement statement = connection.prepareStatement(query);
+            PreparedStatement statement = connection.prepareStatement(Query);
+            statement.setInt(1, Id);
             var result = statement.executeQuery();
             while( result.next() ){
                 decomptes.add( createInstance(result) );
@@ -72,7 +80,17 @@ public class DecompteDao implements IDecompteDao {
     @Override
     public List<Decompte> findAll() {
         var Query = QueriesAllimenntationArretCaisse.SELECT_ALL.getQuery();
-        return getDecomptes(Query);
+        List<Decompte> decomptes = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(Query);
+            var result = statement.executeQuery();
+            while( result.next() ){
+                decomptes.add( createInstance(result) );
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return decomptes;
     }
 
     @Override

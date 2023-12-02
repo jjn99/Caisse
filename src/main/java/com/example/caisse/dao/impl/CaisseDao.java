@@ -59,9 +59,19 @@ public class CaisseDao implements ICaisseDao {
     @Override
     public List<Caisse> findAll() {
         var Query = QueriesCaisse.SELECT_ALL.getQuery();
+        return getCaisses(Query);
+    }
+
+    @Override
+    public List<Caisse> findByActive() {
+        var Query = QueriesCaisse.SELECT_ACTIF.getQuery();
+        return getCaisses(Query);
+    }
+
+    private List<Caisse> getCaisses(String query) {
         List<Caisse> caisses = new ArrayList<>();
         try {
-            PreparedStatement statement = connection.prepareStatement(Query);
+            PreparedStatement statement = connection.prepareStatement(query);
             var result = statement.executeQuery();
             while( result.next() ){
                 caisses.add( createInstance(result) );
@@ -81,7 +91,6 @@ public class CaisseDao implements ICaisseDao {
             statement.setString(1, caisse.getLibelle());
             statement.setBoolean(2, caisse.isActif());
             statement.setInt(3, caisse.getMontants());
-            System.out.println(caisse.getMontants());
             int i = statement.executeUpdate();
             if (i ==1){
                 f= true;
@@ -94,15 +103,12 @@ public class CaisseDao implements ICaisseDao {
 
     @Override
     public boolean update(@NonNull Caisse caisse) {
-        var Query = QueriesCaisse.UPDATE_SIMPLE.getQuery();
+        var Query = QueriesCaisse.UPDATE_LIBELLE.getQuery();
         boolean f =false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
-            statement.setInt(1, caisse.getId());
-            statement.setString(2, caisse.getLibelle());
-            statement.setBoolean(3, caisse.isActif());
-            statement.setInt(4, caisse.getMontants());
-            statement.executeUpdate();
+            statement.setString(1, caisse.getLibelle());
+            statement.setInt(2,caisse.getId());
             int i = statement.executeUpdate();
             if (i ==1){
                 f= true;
@@ -114,12 +120,31 @@ public class CaisseDao implements ICaisseDao {
     }
 
     @Override
-    public boolean delete(@NonNull Integer Id) {
+    public boolean updateMontant(@NonNull Caisse caisse) {
+        var Query = QueriesCaisse.UPDATE_SIMPLE.getQuery();
+        boolean f =false;
+        try {
+            PreparedStatement statement = connection.prepareStatement(Query);
+            statement.setBoolean(1, caisse.isActif());
+            statement.setInt(2,caisse.getMontants());
+            statement.setInt(3, caisse.getId());
+            int i = statement.executeUpdate();
+            if (i ==1){
+                f= true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return f;
+    }
+
+    @Override
+    public boolean delete(@NonNull String libelle) {
         var Query = QueriesCaisse.DELETE_SIMPLE.getQuery();
         boolean f =false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
-            statement.setInt(1, Id);
+            statement.setString(1, libelle);
             int i = statement.executeUpdate();
             if (i == 1){
                 f= true;

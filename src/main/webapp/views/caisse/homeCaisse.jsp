@@ -89,11 +89,11 @@
                                                             <th>${caisse.getMontants()} FCFA</th>
                                                             <th>
                                                                 <div class="flex align-items-center justify-content-center pt-1 px-3 gap-2">
-                                                                    <a href="UpdateCaisseServlet?libelle=${caisse.getLibelle()}" class="btn p-2 flex align-items-center justify-content-center gap-2 border-1 shadow-1 cursor-pointer "
+                                                                    <a href="UpdateCaisseServlet?id=${caisse.getId()}" class="btn p-2 flex align-items-center justify-content-center gap-2 border-1 shadow-1 cursor-pointer "
                                                                        style="background-color: #425DAE; ">
                                                                         <span class="font-medium text-gray-900 white-space-nowrap" style="color: white !important;">Modifier</span>
                                                                     </a>
-                                                                    <a href="DeleteCaisse?login=${caisse.getId()}" class="btn p-2 flex align-items-center justify-content-center gap-2 border-1 shadow-1 cursor-pointer "
+                                                                    <a href="DeleteCaisse?libelle=${caisse.getLibelle()}" class="btn p-2 flex align-items-center justify-content-center gap-2 border-1 shadow-1 cursor-pointer "
                                                                        style="background-color: #ED5867;">
                                                                         <span class="font-medium text-gray-900 white-space-nowrap" style="color: white !important;">Supprimer</span>
                                                                     </a>

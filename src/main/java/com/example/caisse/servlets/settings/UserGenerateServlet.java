@@ -98,7 +98,7 @@ public class UserGenerateServlet extends HttpServlet {
                 addRow(table, gestionnaire);
             }
             document.add(table);
-            Paragraph footer = new Paragraph("\n\nTotal : "+g.size()+"\n \n"+"Caisse-Pro :",getFont("data"));
+            Paragraph footer = new Paragraph("\n\nTotal : "+g.size()+"\n \n",getFont("data"));
             document.add(footer);
             document.close();
         } catch (DocumentException e) {

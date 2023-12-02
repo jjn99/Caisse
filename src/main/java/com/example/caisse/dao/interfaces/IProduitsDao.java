@@ -1,6 +1,5 @@
 package com.example.caisse.dao.interfaces;
 
-import com.example.caisse.entities.Gestionnaire;
 import com.example.caisse.entities.Produits;
 import lombok.NonNull;
 
@@ -17,5 +16,5 @@ public Produits findByCodeProduit(@NonNull String codeproduct);
     public boolean update(@NonNull Produits produits);
 //    public void updatePrix(@NonNull float newPrice,@NonNull Integer id);
 //    public void updateQuantity(@NonNull Integer id,@NonNull int quantity);
-    public boolean delete(@NonNull Integer idProduits);
+    public boolean delete(@NonNull String codeproduct);
 }

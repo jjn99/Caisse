@@ -27,8 +27,45 @@ public class DepenseReaprovisionnementDao implements IDepenseReaprovisionnementD
                 result.getInt(3),
                 result.getString(4),
                 result.getString(5),
-                result.getString(6));
+                result.getString(6),
+                result.getInt(7),
+                result.getString(8));
     }
+
+    @Override
+    public List<DepenseReaprovisionnement> finsByIdCaisse(@NonNull Integer id) {
+        var Query = QueriesDepenseReaprovisionnement.SELECT_ID_CAISSE.getQuery();
+        List<DepenseReaprovisionnement> depenseReaprovisionnement = new ArrayList();
+        try {
+            PreparedStatement statement = connection.prepareStatement(Query);
+            statement.setInt(1,id);
+            var result = statement.executeQuery();
+            while( result.next() ){
+                depenseReaprovisionnement.add( createInstance(result) );
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return depenseReaprovisionnement;
+    }
+
+    @Override
+    public List<DepenseReaprovisionnement> finsByCaisse(@NonNull Integer id) {
+        var Query = QueriesDepenseReaprovisionnement.SELECT_CAISSE.getQuery();
+        List<DepenseReaprovisionnement> depenseReaprovisionnement = new ArrayList();
+        try {
+            PreparedStatement statement = connection.prepareStatement(Query);
+            statement.setInt(1,id);
+            var result = statement.executeQuery();
+            while( result.next() ){
+                depenseReaprovisionnement.add( createInstance(result) );
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return depenseReaprovisionnement;
+    }
+
     @Override
     public List<DepenseReaprovisionnement> findAll() {
         var Query = QueriesDepenseReaprovisionnement.SELECT_ALL.getQuery();
@@ -100,6 +137,8 @@ public class DepenseReaprovisionnementDao implements IDepenseReaprovisionnementD
             statement.setString(3, newDepenseReaprovision.getBeneficiaires());
             statement.setString(4, newDepenseReaprovision.getAdresse());
             statement.setString(5, newDepenseReaprovision.getDate());
+            statement.setInt(6, newDepenseReaprovision.getIdcaisse());
+            statement.setString(7, newDepenseReaprovision.getTypedepense());
            int i= statement.executeUpdate();
            if (i == 1){
                f = true;
@@ -122,6 +161,8 @@ public class DepenseReaprovisionnementDao implements IDepenseReaprovisionnementD
             statement.setString(4, oldDepenseRe.getBeneficiaires());
             statement.setString(5, oldDepenseRe.getAdresse());
             statement.setString(6, oldDepenseRe.getDate());
+            statement.setInt(7, oldDepenseRe.getIdcaisse());
+            statement.setString(8, oldDepenseRe.getTypedepense());
             int i = statement.executeUpdate();
             if (i == 1){
                 f=true;

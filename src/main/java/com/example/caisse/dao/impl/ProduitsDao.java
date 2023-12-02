@@ -96,6 +96,7 @@ public class ProduitsDao implements IProduitsDao {
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
             statement.setInt(1,idProduits);
+            System.out.println("Hello");
             var result = statement.executeQuery();
             if(result.next()) {
                 produits = createInstance(result);
@@ -152,14 +153,13 @@ public class ProduitsDao implements IProduitsDao {
         boolean f=false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
-            statement.setInt(1, produits.getId());
-            statement.setString(2, produits.getCodeproduct());
-            statement.setFloat(3, produits.getPrice());
-            statement.setInt(4, produits.getQuantity());
-            statement.setString(5, produits.getTypeproduct());
-            statement.setString(6, produits.getDescription());
-            statement.setInt(7, produits.getIdreaprovisionnement());
-            statement.setString(8, produits.getLibelle());
+            statement.setString(1, produits.getCodeproduct());
+            statement.setFloat(2, produits.getPrice());
+            statement.setInt(3, produits.getQuantity());
+            statement.setString(4, produits.getTypeproduct());
+            statement.setString(5, produits.getDescription());
+            statement.setString(6, produits.getLibelle());
+            statement.setInt(7, produits.getId());
             int i = statement.executeUpdate();
             if (i ==1){
                 f= true;
@@ -171,12 +171,12 @@ public class ProduitsDao implements IProduitsDao {
     }
 
     @Override
-    public boolean delete(@NonNull Integer idProduits) {
+    public boolean delete(@NonNull String codeproduct) {
         var Query = QueriesProduits.DELETE_SIMPLE.getQuery();
         boolean f=false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
-            statement.setInt(1, idProduits);
+            statement.setString(1, codeproduct);
             int i = statement.executeUpdate();
             if (i == 1){
                 f= true;

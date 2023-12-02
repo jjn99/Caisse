@@ -96,13 +96,13 @@ public class ProductGenerateSerlet extends HttpServlet {
                 addRow(table, produits);
             }
             document.add(table);
-            Paragraph footer = new Paragraph("\n\nTotal : "+p.size()+"\n \n"+"Caisse-Pro :",getFont("data"));
+            Paragraph footer = new Paragraph("\n\nTotal : "+p.size()+"\n \n",getFont("data"));
             document.add(footer);
             document.close();
         } catch (DocumentException e) {
             throw new RuntimeException(e);
         }
-        response.sendRedirect("HomeUserServlet");
+        response.sendRedirect("HomeProduits");
 
     }
 

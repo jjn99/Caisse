@@ -27,6 +27,15 @@
             <div>
                 <div class="w-full surface-card" style="border-radius: 53px">
                     <div class="text-900 text-3xl font-medium text-center mb-3">FORMULAIRE</div>
+                    <c:if test="${ !empty error}">
+                        <div class="alert alert-danger h-max-15rem d-flex text-align-center" role="alert">
+                            <div class="row">
+                                <div>
+                                    <c:out value="${error}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </c:if>
                     <div>
                         <label class="block text-900 text-xl font-medium mb-2">Libelle</label>
                         <input
@@ -41,7 +50,7 @@
                         >
                             <button class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
                                     style="background-color: #425DAE;border-radius: 10px;height: 3rem; color:white; text-align: center" ><span>Enregistrer</span></button>
-                            <a href="HomeUserServlet" class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
+                            <a href="HomeCaisseServlet" class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
                                style="background-color: #d9342b;border-radius: 10px;height: 3rem; color:white; text-align: center" ><span>Annuler</span></a>
                         </div>
                     </div>

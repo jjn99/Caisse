@@ -31,7 +31,6 @@ public class AuthLoginServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/views/auth/login.jsp");
             dispatcher.forward(request, response);
         }else {
-            System.out.println("redirect");
             response.sendRedirect("homeServlet");
         }
     }
@@ -58,10 +57,10 @@ public class AuthLoginServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
             }else {
-                System.out.println(PasswordUtils.check(password,user.getMotdepasse()));
                 if(!PasswordUtils.check(password,user.getMotdepasse())) {
                     try {
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/auth/login.jsp");
+                        request.setAttribute("error_message", "Login ou Mot de passe incorrect");
                         dispatcher.forward(request, response);
                     } catch (ServletException | IOException e) {
                         throw new RuntimeException(e);

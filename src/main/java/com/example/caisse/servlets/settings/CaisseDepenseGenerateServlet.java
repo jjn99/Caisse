@@ -1,6 +1,7 @@
 package com.example.caisse.servlets.settings;
 
 import com.example.caisse.dao.impl.CaisseDao;
+import com.example.caisse.dao.impl.DepenseReaprovisionnementDao;
 import com.example.caisse.entities.Caisse;
 import com.example.caisse.entities.DepenseReaprovisionnement;
 import com.itextpdf.text.*;
@@ -19,9 +20,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
 
-@WebServlet(name = "CaisseGenerateServlet", value = "/CaisseGenerateServlet")
-public class CaisseGenerateServlet extends HttpServlet {
-    private final CaisseDao caisseDao = new CaisseDao();
+@WebServlet(name = "CaisseDepenseGenerateServlet", value = "/CaisseDepenseGenerateServlet")
+public class CaisseDepenseGenerateServlet extends HttpServlet {
+    private DepenseReaprovisionnementDao depenseDao = new DepenseReaprovisionnementDao();
 
     private void setRectangleInPdf(Document document) throws DocumentException {
         Rectangle rect = new Rectangle(100, 100, 100, 100);
@@ -49,9 +50,8 @@ public class CaisseGenerateServlet extends HttpServlet {
 
         }
     }
-
     private void addTableHeader(PdfPTable table) {
-        Stream.of("Libelle","Statut","Montant").forEach(columnTitle -> {
+        Stream.of("Beneficiaire","Adresse","Libelle","Montant","Type de l'oparation").forEach(columnTitle -> {
             PdfPCell header = new PdfPCell();
             header.setBackgroundColor(BaseColor.LIGHT_GRAY);
             header.setBorderWidth(2);
@@ -62,22 +62,23 @@ public class CaisseGenerateServlet extends HttpServlet {
             table.addCell(header);
         });
     }
-
-    private void addRow(PdfPTable table, Caisse caisse) {
-        table.addCell(caisse.getLibelle());
-        table.addCell(String.valueOf(caisse.isActif()));
-        table.addCell(String.valueOf(caisse.getMontants()));
+    private void addRow(PdfPTable table, DepenseReaprovisionnement deps) {
+        table.addCell(deps.getBeneficiaires());
+        table.addCell(deps.getAdresse());
+        table.addCell(deps.getLibelle());
+        table.addCell(String.valueOf(deps.getMontant()));
+        table.addCell(deps.getTypedepense());
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Caisse> c = caisseDao.findAll();
+        Integer id = Integer.parseInt(request.getParameter("idcaisse"));
+        List<DepenseReaprovisionnement> list = depenseDao.finsByCaisse(id);
         Date date = new Date();
         long time = date.getTime();
-        String UUID = "Caisse-Pro-"+time+"AllCaisse";
+        String UUID = "Caisse-Pro-"+time+"DepenseCaisse";
         String path= "C:\\Users\\13476\\Desktop\\projetJavaEE";
         String content ="Caisse-Pro\n\n";
-        String title ="Liste des Caisse\n\n\n";
+        String title ="Liste des depenses d'une Caisse \n\n\n";
         Document document = new Document();
         try {
             PdfWriter.getInstance(document,new FileOutputStream(path+"\\"+UUID+".pdf"));
@@ -88,22 +89,23 @@ public class CaisseGenerateServlet extends HttpServlet {
             document.add(doc);
             Paragraph titleDoc = new Paragraph(title,getFont("Data"));
             document.add(titleDoc);
-            Paragraph dateDoc = new Paragraph(c+"\n \n",getFont("data"));
+            Paragraph dateDoc = new Paragraph(list+"\n \n",getFont("data"));
             dateDoc.add(dateDoc);
-            PdfPTable table = new PdfPTable(3);
+            PdfPTable table = new PdfPTable(5);
             table.setWidthPercentage(100);
             addTableHeader(table);
-            for (Caisse caisse : c) {
-                addRow(table, caisse);
+            for (DepenseReaprovisionnement deps : list) {
+                addRow(table, deps);
             }
             document.add(table);
-            Paragraph footer = new Paragraph("\n\nTotal : "+c.size()+"\n \n",getFont("data"));
+            Paragraph footer = new Paragraph("\n\nTotal : "+list.size()+"\n \n",getFont("data"));
             document.add(footer);
             document.close();
         } catch (DocumentException e) {
             throw new RuntimeException(e);
         }
-        response.sendRedirect("HomeCaisseServlet");
+        response.sendRedirect("HomeVenteServlet");
+
     }
 
     @Override

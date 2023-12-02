@@ -15,9 +15,12 @@ import java.io.IOException;
 public class UpdateProduitServlet extends HttpServlet {
 
     private final ProduitsDao produitsDao = new ProduitsDao();
+    Produits produits = new Produits();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/stock/updateProduit.jsp");
+        Integer Id = Integer.parseInt(request.getParameter("id"));
+        produits = produitsDao.findByID(Id);
         dispatcher.forward(request, response);
     }
 
@@ -29,19 +32,17 @@ public class UpdateProduitServlet extends HttpServlet {
         Integer price = Integer.parseInt(request.getParameter("price"));
         String description = request.getParameter("description");
         String type = request.getParameter("type");
-        Produits prod = produitsDao.findByCodeProduit(code);
-        if (prod == null) {
+        if (produits == null) {
             request.setAttribute("error", "Produits non trouver!");
         } else {
-            prod.setCodeproduct(code);
-            prod.setLibelle(libelle);
-            prod.setQuantity(quantity);
-            prod.setPrice(price);
-            prod.setDescription(description);
-            prod.setTypeproduct(type);
-            if (produitsDao.update(prod)) {
-                request.setAttribute("Update", "Success");
-                response.sendRedirect("HomeUserServlet");
+            produits.setCodeproduct(code);
+            produits.setLibelle(libelle);
+            produits.setQuantity(quantity);
+            produits.setPrice(price);
+            produits.setDescription(description);
+            produits.setTypeproduct(type);
+            if (produitsDao.update(produits)) {
+                response.sendRedirect("HomeProduits");
             } else {
                 request.setAttribute("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
             }

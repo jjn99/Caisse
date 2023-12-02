@@ -157,7 +157,7 @@
                 </div>
                 <div >
                     <div class="flex align-items-center justify-content-center pt-2 px-3 gap-2">
-                        <a href="DRGenerateServlet" class="p-3 flex align-items-center justify-content-center w-7 gap-2 bg-white border-1 shadow-1 cursor-pointer hover:bg-black-alpha-10 transition-duration-200"
+                        <a href="StatistiqueServlet" class="p-3 flex align-items-center justify-content-center w-7 gap-2 bg-white border-1 shadow-1 cursor-pointer hover:bg-black-alpha-10 transition-duration-200"
                            style="border-radius: 50px;text-decoration: none; color: black;">
                             <span class="font-medium text-gray-900 white-space-nowrap">Parametres</span>
                         </a>

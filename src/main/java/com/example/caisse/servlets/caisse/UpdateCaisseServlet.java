@@ -17,29 +17,27 @@ import java.util.Map;
 @WebServlet(name = "UpdateCaisseServlet", value = "/UpdateCaisseServlet")
 public class UpdateCaisseServlet extends HttpServlet {
     private final CaisseDao caisseDao = new CaisseDao();
+    Caisse caisse = new Caisse();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/caisse/updateCaisse.jsp");
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        caisse = caisseDao.findById(id);
         dispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String libelle = request.getParameter("libelle");
-        Map<String, String> errors = new HashMap<>();
-        Caisse caisse = caisseDao.findByLibelle(libelle);
         if (caisse == null) {
             request.setAttribute("error", "Caisse non trouver!");
         } else {
-            int Id = caisse.getId();
-            Caisse caisse1 = new Caisse(Id, libelle, caisse.isActif(), caisse.getMontants());
-            if (caisseDao.update(caisse1)) {
-                request.setAttribute("Update", "Success");
+            caisse.setLibelle(libelle);
+            if (caisseDao.update(caisse)) {
                 response.sendRedirect("HomeCaisseServlet");
             } else {
                 request.setAttribute("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
             }
-
         }
     }
 }

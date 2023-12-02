@@ -49,7 +49,7 @@ public class DRGenerateServlet extends HttpServlet {
                 addRow(table, depenseReaprovisionnement);
             }
             document.add(table);
-            Paragraph footer = new Paragraph("\n\nTotal : "+dr.size()+"\n \n"+"Caisse-Pro :",getFont("data"));
+            Paragraph footer = new Paragraph("\n\nTotal : "+dr.size()+"\n \n",getFont("data"));
             document.add(footer);
             document.close();
         } catch (DocumentException e) {

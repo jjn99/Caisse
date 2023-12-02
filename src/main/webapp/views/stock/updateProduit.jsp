@@ -21,9 +21,9 @@
 <div class="surface-ground mt-3 flex align-items-center justify-content-center overflow-hidden">
     <div class="flex flex-column align-items-center justify-content-center">
         <%
-            String codeproduit = request.getParameter("codeproduct");
+            Integer Id = Integer.valueOf(request.getParameter("id"));
             ProduitsDao produitsDao = new ProduitsDao();
-            Produits p = produitsDao.findByCodeProduit(codeproduit);
+            Produits p = produitsDao.findByID(Id);
         %>
         <form method="post" action="UpdateProduitServlet">
             <div class="flex flex-wrap">
@@ -105,7 +105,7 @@
             >
                 <button class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
                         style="background-color: #425DAE;border-radius: 10px;height: 3rem; color:white; text-align: center" ><span>Enregistrer</span></button>
-                <a href="/AddProduitServlet" class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
+                <a href="HomeProduits" class="btn w-full p-2 flex gap-2 border-1 shadow-1 cursor-pointer "
                    style="background-color: #d9342b;border-radius: 10px;height: 3rem; color:white; text-align: center" ><span>Annuler</span></a>
             </div>
         </form>

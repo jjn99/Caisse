@@ -82,13 +82,11 @@ public class UserDao implements IUserDao {
         boolean f =false;
         try {
             PreparedStatement statement = connection.prepareStatement(Query);
-            statement.setInt(1, gestionnaire.getId());
-            statement.setString(2, gestionnaire.getNom());
-            statement.setString(3, gestionnaire.getPrenom());
-            statement.setString(4, gestionnaire.getTelephone());
-            statement.setString(5, gestionnaire.getMotdepasse());
-            statement.setString(6, gestionnaire.getLogin());
-
+            statement.setString(1, gestionnaire.getNom());
+            statement.setString(2, gestionnaire.getPrenom());
+            statement.setString(3, gestionnaire.getTelephone());
+            statement.setString(4, gestionnaire.getLogin());
+            statement.setInt(5, gestionnaire.getId());
             statement.executeUpdate();
             int i = statement.executeUpdate();
             if (i ==1){
