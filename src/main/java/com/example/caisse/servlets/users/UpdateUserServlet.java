@@ -33,7 +33,9 @@ public class UpdateUserServlet extends HttpServlet {
         Map<String, String> errors = new HashMap<>();
         Gestionnaire gestionnaire = userDao.findByLogin(login);
         if(gestionnaire == null) {
-            errors.put("error", "Utilisateur non trouver!");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/views/users/updateUser.jsp");
+            request.setAttribute("error", "Utilisateur non trouver!");
+            dispatcher.forward(request, response);
         }else {
             int Id = gestionnaire.getId();
             String motdepasse = gestionnaire.getMotdepasse();
@@ -42,7 +44,9 @@ public class UpdateUserServlet extends HttpServlet {
                 errors.put("Update", "Success");
                 response.sendRedirect("HomeUserServlet");
             } else {
-                errors.put("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/views/users/updateUser.jsp");
+                request.setAttribute("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
+                dispatcher.forward(request, response);
             }
 
         }

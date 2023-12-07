@@ -22,6 +22,15 @@
         <form method="post" action="AddProduitServlet">
             <div class="flex flex-wrap">
                 <div class="text-900 text-3xl font-medium text-center mb-3">FORMULAIRE</div>
+                <c:if test="${ !empty error}">
+                    <div class="alert alert-danger h-max-15rem d-flex text-align-center" role="alert">
+                        <div class="row">
+                            <div>
+                                <c:out value="${error}"/>
+                            </div>
+                        </div>
+                    </div>
+                </c:if>
                 <div class="col-12">
                     <div class="grid">
                         <div class="field col-12 col-md-6">

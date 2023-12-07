@@ -34,7 +34,9 @@ public class AddUserServlet extends HttpServlet {
         Map<String, String> errors = new HashMap<>();
         Gestionnaire gestionnaire = userDao.findByLogin(login);
             if(gestionnaire != null) {
-                errors.put("login_error", "Ce Login est deja utilise!");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/views/users/register.jsp");
+                request.setAttribute("error", "Ce Login est deja utilise!");
+                dispatcher.forward(request, response);
             }else {
                 String pwd = PasswordUtils.encode(password);
                 Gestionnaire gest = new Gestionnaire(nom,prenom,telephone,pwd,login);
@@ -42,7 +44,9 @@ public class AddUserServlet extends HttpServlet {
                 if (userDao.save(gest)) {
                     response.sendRedirect("HomeUserServlet");
                 } else {
-                    errors.put("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/views/users/register.jsp");
+                    request.setAttribute("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
+                    dispatcher.forward(request, response);
                 }
 
             }

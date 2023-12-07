@@ -46,11 +46,17 @@ public class AddProduitServlet extends HttpServlet {
                if (produitsDao.save(product)) {
                    response.sendRedirect("HomeProduits");
                } else {
+                   RequestDispatcher dispatcher = request.getRequestDispatcher("/views/stock/addProduit.jsp");
                    request.setAttribute("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
+                   dispatcher.forward(request, response);
+
                }
            }
            else {
+               RequestDispatcher dispatcher = request.getRequestDispatcher("/views/stock/addProduit.jsp");
                request.setAttribute("error", "Ce produit existe déjà");
+               dispatcher.forward(request, response);
+
            }
     }
 }

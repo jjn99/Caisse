@@ -36,7 +36,10 @@ public class UpdateCaisseServlet extends HttpServlet {
             if (caisseDao.update(caisse)) {
                 response.sendRedirect("HomeCaisseServlet");
             } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/views/caisse/updateCaisse.jsp");
                 request.setAttribute("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
+                dispatcher.forward(request, response);
+
             }
         }
     }

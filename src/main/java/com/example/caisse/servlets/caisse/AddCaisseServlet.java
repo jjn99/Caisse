@@ -33,7 +33,9 @@ public class AddCaisseServlet extends HttpServlet {
         Map<String, String> errors = new HashMap<>();
         Caisse caisse = caisseDao.findByLibelle(libelle);
         if(caisse != null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/views/caisse/homeCaisse.jsp");
             request.setAttribute("error", "Ce libelle est deja utilise!");
+            dispatcher.forward(request, response);
         }else {
             Caisse caisse1 = new Caisse();
             caisse1.setLibelle(libelle);
@@ -43,7 +45,9 @@ public class AddCaisseServlet extends HttpServlet {
                 request.setAttribute("Add", "Success");
                 response.sendRedirect("HomeCaisseServlet");
             } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/views/caisse/homeCaisse.jsp");
                 request.setAttribute("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
+                dispatcher.forward(request, response);
             }
 
         }

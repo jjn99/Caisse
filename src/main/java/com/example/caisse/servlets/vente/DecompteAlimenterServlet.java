@@ -63,7 +63,9 @@ public class DecompteAlimenterServlet extends HttpServlet {
            caisseDao.updateMontant(caisse);
            response.sendRedirect("HomeVenteServlet");
        } else {
+           RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vente/AlimenterCaisse.jsp");
            request.setAttribute("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
+           dispatcher.forward(request, response);
        }
     }
 }

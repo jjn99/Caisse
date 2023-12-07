@@ -40,7 +40,10 @@ public class AddDepenseReaprovisionnement extends HttpServlet {
        Caisse caisse = caisseDao.findById(idcaisse);
        if (caisse != null){
           if(caisse.getMontants() - montant <0){
+              RequestDispatcher dispatcher = request.getRequestDispatcher("/views/stock/addReaprovisionnement.jsp");
               request.setAttribute("error", "Montant inadequat!");
+              dispatcher.forward(request, response);
+
           }else {
               DepenseReaprovisionnement depenseReaprovisionnement = new DepenseReaprovisionnement();
               depenseReaprovisionnement.setAdresse(adresse);
@@ -55,11 +58,17 @@ public class AddDepenseReaprovisionnement extends HttpServlet {
                   caisseDao.updateMontant(caisse);
                   response.sendRedirect("HomeProduits");
               } else {
+                  RequestDispatcher dispatcher = request.getRequestDispatcher("/views/stock/addReaprovisionnement.jsp");
                   request.setAttribute("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
+                  dispatcher.forward(request, response);
+
               }
           }
        }else {
+           RequestDispatcher dispatcher = request.getRequestDispatcher("/views/stock/addReaprovisionnement.jsp");
            request.setAttribute("error", "Caisse innexistante!");
+           dispatcher.forward(request, response);
+
        }
 
     }

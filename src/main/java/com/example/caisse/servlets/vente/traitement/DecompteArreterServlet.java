@@ -64,10 +64,14 @@ public class DecompteArreterServlet extends HttpServlet {
                 caisseDao.updateMontant(caisse);
                 response.sendRedirect("HomeVenteServlet");
             } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vente/traitement/ArreterCaisse.jsp");
                 request.setAttribute("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
+                dispatcher.forward(request, response);
             }
         }else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vente/traitement/ArreterCaisse.jsp");
             request.setAttribute("error", "Le montant enregistrer n'est pas egale a celle actuellement disponible dans la caisse!");
+            dispatcher.forward(request, response);
         }
     }
 }

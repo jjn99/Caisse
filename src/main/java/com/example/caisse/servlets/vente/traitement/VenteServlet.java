@@ -36,7 +36,9 @@ public class VenteServlet extends HttpServlet {
         String adresse = request.getParameter("adresse");
         if (caisse != null){
             if(caisse.getMontants() - montant < 0){
-                request.setAttribute("error", "Montant inadequat!");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vente/traitement/vente.jsp");
+                request.setAttribute("error", "La caisse choisie ne peut effectuer cette operation !");
+                dispatcher.forward(request, response);
             }else {
                 DepenseReaprovisionnement depenseReaprovisionnement = new DepenseReaprovisionnement();
                 depenseReaprovisionnement.setAdresse(adresse);
@@ -51,11 +53,15 @@ public class VenteServlet extends HttpServlet {
                     caisseDao.updateMontant(caisse);
                     response.sendRedirect("HomeVenteServlet?");
                 } else {
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vente/traitement/vente.jsp");
                     request.setAttribute("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
+                    dispatcher.forward(request, response);
                 }
             }
         }else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vente/traitement/vente.jsp");
             request.setAttribute("error", "Caisse innexistante!");
+            dispatcher.forward(request, response);
         }
 
     }

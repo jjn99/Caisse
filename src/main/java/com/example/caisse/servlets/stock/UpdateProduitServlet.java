@@ -33,7 +33,10 @@ public class UpdateProduitServlet extends HttpServlet {
         String description = request.getParameter("description");
         String type = request.getParameter("type");
         if (produits == null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/views/stock/updateProduit.jsp");
             request.setAttribute("error", "Produits non trouver!");
+            dispatcher.forward(request, response);
+
         } else {
             produits.setCodeproduct(code);
             produits.setLibelle(libelle);
@@ -44,7 +47,10 @@ public class UpdateProduitServlet extends HttpServlet {
             if (produitsDao.update(produits)) {
                 response.sendRedirect("HomeProduits");
             } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/views/stock/updateProduit.jsp");
                 request.setAttribute("error", "Une erreur est survenu lors de l'operation veilliez reesayer!");
+                dispatcher.forward(request, response);
+
             }
         }
     }
